@@ -20,6 +20,7 @@ import { ImpressumComponent } from './components/impressum/impressum.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 
 import {ValidateService} from './services/validate.service';
+import {DbService} from './services/db.service';
 import {AuthService} from './services/auth.service';
 import {FlashMessagesModule} from 'angular2-flash-messages';
 import {AuthGuard} from './guards/auth.guard';
@@ -64,7 +65,7 @@ const appRoutes: Routes =  [
     RouterModule.forRoot(appRoutes),
     FlashMessagesModule
   ],
-  providers: [ValidateService, AuthService, AuthGuard],
+  providers: [ValidateService, AuthService, AuthGuard, DbService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
