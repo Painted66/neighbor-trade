@@ -22,6 +22,7 @@ export class NewTradeComponent implements OnInit {
   trade_min_rating: Number;
   trade_location: String;
   trade_max_distance: Number;
+  user:Object;
 
   constructor(
       private validateService: ValidateService,
@@ -30,9 +31,11 @@ export class NewTradeComponent implements OnInit {
       private router: Router) { }
 
   ngOnInit() {
+
   }
 
   onRegisterSubmit(){
+    var user_id = JSON.parse(localStorage.getItem('user')).id;
     const trade = {
       trade_offer_title: this.trade_offer_title,
       trade_offer_description: this.trade_offer_description,
@@ -46,7 +49,7 @@ export class NewTradeComponent implements OnInit {
       trade_min_rating: this.trade_min_rating,
       trade_location: this.trade_location,
       trade_max_distance: this.trade_max_distance,
-      trade_demand_recipient: "sajdfklasdf123123"   //has to be changed to get the user Id od the user who creates the trade offer
+      trade_demand_recipient: user_id  //has to be changed to get the user Id od the user who creates the trade offer
     }
 
     //Required Fields

@@ -40,7 +40,7 @@ const TradeSchema = mongoose.Schema({
         type: String
     },
     trade_deadline: {
-        type: String,
+        type: Date,
         required: true
     },
     trade_min_rating: {
