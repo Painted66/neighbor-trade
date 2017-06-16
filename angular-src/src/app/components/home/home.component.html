@@ -190,7 +190,7 @@
     <div class="row">
       <div class="service-box text-center">
         <h2 class="section-heading">Register and start trading!</h2>
-
+        <flash-messages></flash-messages>
         <form (submit)="onRegisterSubmit()">
           <div class="form-group">
             <label>Name</label>
@@ -198,7 +198,7 @@
           </div>
           <div class="form-group">
             <label>Username</label>
-            <input type="text" [(ngModel)]="username" name="username" class="form-control">
+            <input type="text" [(ngModel)]="usernameR" name="usernameR" class="form-control">
           </div>
           <div class="form-group">
             <label>Email</label>
@@ -206,16 +206,15 @@
           </div>
           <div class="form-group">
             <label>Password</label>
-            <input type="password" [(ngModel)]="password" name="password" class="form-control">
+            <input type="password" [(ngModel)]="passwordR" name="passwordR" class="form-control">
           </div>
           <input type="submit" class="btn btn-default btn-xl sr-button" value="Register">
         </form>
         <div class="service-box">
         </div>
       </div>
-      </div>
+    </div>
   </section>
-
   <section id="contact">
     <div class="container">
       <div class="row">

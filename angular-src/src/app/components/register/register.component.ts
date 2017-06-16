@@ -11,9 +11,9 @@ import {Router} from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
   name: String;
-  username: String;
+  usernameR: String;
   email: String;
-  password: String;
+  passwordR: String;
 
   constructor(
     private validateService: ValidateService,
@@ -26,27 +26,27 @@ export class RegisterComponent implements OnInit {
   }
 
   onRegisterSubmit(){
-    const user = {
+    const userR = {
       name: this.name,
       email: this.email,
-      username: this.username,
-      password: this.password
+      username: this.usernameR,
+      password: this.passwordR
     }
 
     // Required Fields
-    if(!this.validateService.validateRegister(user)){
+    if(!this.validateService.validateRegister(userR)){
       this.flashMessage.show('Please fill in all fields', {cssClass: 'alert-danger', timeout: 3000});
       return false;
     }
 
     // Validate Email
-    if(!this.validateService.validateEmail(user.email)){
+    if(!this.validateService.validateEmail(userR.email)){
       this.flashMessage.show('Please use a valid email', {cssClass: 'alert-danger', timeout: 3000});
       return false;
     }
 
     // Register user
-    this.authService.registerUser(user).subscribe(data => {
+    this.authService.registerUser(userR).subscribe(data => {
       if(data.success){
         this.flashMessage.show('You are now registered and can log in', {cssClass: 'alert-success', timeout: 3000});
         this.router.navigate(['/login']);
