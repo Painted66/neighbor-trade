@@ -50,7 +50,7 @@ export class HomeComponent implements OnInit {
   }
 
   onRegisterSubmit(){
-    console.log("hi");
+
     const user = {
       name: this.name,
       email: this.email,
@@ -63,7 +63,7 @@ export class HomeComponent implements OnInit {
       this.flashMessage.show('Please fill in all fields', {cssClass: 'alert-danger', timeout: 3000});
       return false;
     }
-
+    console.log("hi");
     // Validate Email
     if(!this.validateService.validateEmail(user.email)){
       this.flashMessage.show('Please use a valid email', {cssClass: 'alert-danger', timeout: 3000});
