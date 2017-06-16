@@ -96,14 +96,14 @@
  }
  .navbar-default .nav>li.active>a,.navbar-default .nav>li.active>a:focus{
  	color:#02C5FF!important;
- 	background-color:transparent
+ 	background-color:#02C5FF
  }
  .navbar-default .nav>li.active>a:focus:hover,.navbar-default .nav>li.active>a:hover{
- 	background-color:transparent
+ 	background-color:#02C5FF
  }
  @media (min-width:768px){
  	.navbar-default{
- 		background-color:transparent;
+ 		background-color:#02C5FF;
  		border-color:rgba(255,255,255,.3)
  	}
  	.navbar-default .navbar-header .navbar-brand{color:rgba(255,255,255,.7)
@@ -136,7 +136,7 @@
  }
  }
  header{
- 	min-height:auto;
+ 	min-height:auto!important;
  	-webkit-background-size:cover;
  	-moz-background-size:cover;
  	background-size:cover;
@@ -183,13 +183,13 @@
  }
 @media (min-width:768px){
  	header{
- 		min-height:100%
+ 		min-height:auto;
+ 		top:50px;
+ 		padding-top:100px;
+ 		padding-bottom:100px;
  	}
  	header .header-content{
  		top:50%;
- 		-webkit-transform:translateY(-50%);
- 		-ms-transform:translateY(-50%);
- 		transform:translateY(-50%);
  		padding:0 50px
  	}
  	header .header-content .header-content-inner{
