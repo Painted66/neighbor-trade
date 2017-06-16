@@ -142,7 +142,8 @@
  	background-size:cover;
  	-o-background-size:cover;
  	background-position:center;
- 	background-image:url(assets/header2.jpg);color:#fff
+ 	background-image:url(/assets/header2.jpg);
+ 	color:#fff
  }
  header .header-content{
  	padding:100px 15px
@@ -180,12 +181,11 @@
  	color:rgba(255,255,255,.9);
  	font-size:14px;
  }
- @media (min-width:768px){
+@media (min-width:768px){
  	header{
  		min-height:100%
  	}
  	header .header-content{
- 		position:absolute;
  		top:50%;
  		-webkit-transform:translateY(-50%);
  		-ms-transform:translateY(-50%);

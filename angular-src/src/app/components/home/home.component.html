@@ -1,248 +1,251 @@
-<header>
-  <div class="header-content">
-    <div class="header-content-inner">
-      <h1 id="homeHeading">Neighbor Trade</h1>
-      <hr>
-      <p>Welcome to Neighbor Trade, the easy way to trade your skills</p>
-      <!--
-      <a href="#about" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
-      -->
-      <div class="row">
-        <div class="service-box">
-          <form (submit)="onLoginSubmit()">
-            <div class="form-group">
-              <label>Username</label>
-              <input type="text" class="form-control" [(ngModel)]="username" name="username">
-            </div>
-            <div class="form-group">
-              <label>Password</label>
-              <input type="password" class="form-control" [(ngModel)]="password" name="password">
-            </div>
-            <input type="submit" class="btn btn-primary" value="Login">
-          </form>
-        </div>
-      </div>
-    </div>
-    <a href="#register" id="registerLink" class="page-scroll">Register</a>
-  </div>
-</header>
-  <section class="bg-primary" id="about">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 text-center">
-          <h2 class="section-heading">You have the skill somebody needs!</h2>
-          <hr class="light">
-          <p class="text-faded">You have a task you do not like?</p>
-          <p class="text-faded">You do not want to pay somebody to do it?</p>
-          <p class="text-faded">There are actually tasks you enjoy doing?</p>
-          <h3 class="text-faded">Trade your task!</h3>
-          <hr class="primary">
-          <a href="#services" class="page-scroll btn btn-default btn-xl sr-button">Get Started!</a>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <section id="services">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 text-center">
-          <h2 class="section-heading">Your trading possibilities</h2>
-          <hr>
 
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-3 col-md-6 text-center">
-          <div class="service-box">
-            <i class="fa fa-4x fa-plus-square text-primary sr-icons"></i>
-            <h3>Create an offer</h3>
-            <p class="text-muted">You can create trading offers to find matching offers or for others to find it, when they search.</p>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 text-center">
-          <div class="service-box">
-            <i class="fa fa-4x fa-search text-primary sr-icons"></i>
-            <h3>Search for offers</h3>
-            <p class="text-muted">Search for offers that might be interesting for you.</p>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 text-center">
-          <div class="service-box">
-            <i class="fa fa-4x fa-handshake-o text-primary sr-icons"></i>
-            <h3>Accept offers</h3>
-            <p class="text-muted">Accept suggestions, which fit your skills and needs.</p>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 text-center">
-          <div class="service-box">
-            <i class="fa fa-4x fa-commenting text-primary sr-icons"></i>
-            <h3>Rate trades</h3>
-            <p class="text-muted">Rate the trade and the person you traded with, to have a fair and transparent market.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    <header>
+        <div class="header-content">
+            <div class="header-content-inner">
+                <h1 id="homeHeading">Neighbor Trade</h1>
+                <hr>
+                <p>Welcome to Neighbor Trade, the easy way to trade your skills</p>
+                <!-- 
+                <a href="#about" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
+                -->
+				<div class="row">
+					<div class="service-box">
+						<form (submit)="onLoginSubmit()">
+							<div class="form-group">
+								<label>Username</label>
+								<input type="text" class="form-control" [(ngModel)]="username" name="username">
+							</div>
+							<div class="form-group">
+								<label>Password</label>
+								<input type="password" class="form-control" [(ngModel)]="password" name="password">
+							</div>
+							<input type="submit" class="btn btn-primary" value="Login">
+						</form>
+					</div>
+				</div>
+			</div>
+			<a href="#register" id="registerLink" class="page-scroll">Register</a>
+		</div>
+    </header>
 
-  <section class="no-padding" id="portfolio">
-    <div class="container-fluid">
-      <div class="row no-gutter popup-gallery">
-        <div class="col-lg-4 col-sm-6">
-          <div class="portfolio-box">
-            <img src="assets/construction.jpg" class="img-responsive" alt="">
-            <div class="portfolio-box-caption">
-              <div class="portfolio-box-caption-content">
-                <div class="project-category text-faded">
-                  Constructions
+    <section class="bg-primary" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">You have the skill somebody needs!</h2>
+                    <hr class="light">
+                    <p class="text-faded">You have a task you do not like?</p>
+                	<p class="text-faded">You do not want to pay somebody to do it?</p>
+                	<p class="text-faded">There are actually tasks you enjoy doing?</p>
+                	<h3 class="text-faded">Trade your task!</h3>
+                    <hr class="primary">
+                    <a href="#services" class="page-scroll btn btn-default btn-xl sr-button">Get Started!</a>
                 </div>
-                <div class="project-name">
-                  From building a terrace to painting fence..
-                </div>
-              </div>
             </div>
-          </div>
         </div>
-        <div class="col-lg-4 col-sm-6">
-          <div class="portfolio-box">
-            <img src="assets/garden.jpg" class="img-responsive" alt="">
-            <div class="portfolio-box-caption">
-              <div class="portfolio-box-caption-content">
-                <div class="project-category text-faded">
-                  Garden
-                </div>
-                <div class="project-name">
-                  Be it mowing the lawn to cut down a tree..
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-          <div class="portfolio-box">
-            <img src="assets/it.jpg" class="img-responsive" alt="">
-            <div class="portfolio-box-caption">
-              <div class="portfolio-box-caption-content">
-                <div class="project-category text-faded">
-                  IT
-                </div>
-                <div class="project-name">
-                  Programming, Hardware repair or installation
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-          <div class="portfolio-box">
-            <img src="assets/vehicles.jpg" class="img-responsive" alt="">
-            <div class="portfolio-box-caption">
-              <div class="portfolio-box-caption-content">
-                <div class="project-category text-faded">
-                  Vehicles
-                </div>
-                <div class="project-name">
-                  From changing tires to fixing the front lights
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-          <div class="portfolio-box">
-            <img src="assets/textile.jpg" class="img-responsive" alt="">
-            <div class="portfolio-box-caption">
-              <div class="portfolio-box-caption-content">
-                <div class="project-category text-faded">
-                  Textile
-                </div>
-                <div class="project-name">
-                  Either fixing or creating ..
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-          <div class="portfolio-box">
-            <img src="assets/household.jpg" class="img-responsive" alt="">
-            <div class="portfolio-box-caption">
-              <div class="portfolio-box-caption-content">
-                <div class="project-category text-faded">
-                  Household
-                </div>
-                <div class="project-name">
-                  Any help within the house..
-                </div>
-              </div>
-            </div>
-            <div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="bg-primary" id="register">
-    <div class="row">
-      <div class="service-box text-center">
-        <h2 class="section-heading">Register and start trading!</h2>
+    <section id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Your trading possibilities</h2>
+                	<hr>
+                	
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+            	<div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box">
+                        <i class="fa fa-4x fa-plus-square text-primary sr-icons"></i>
+                        <h3>Create an offer</h3>
+                        <p class="text-muted">You can create trading offers to find matching offers or for others to find it, when they search.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box">
+                        <i class="fa fa-4x fa-search text-primary sr-icons"></i>
+                        <h3>Search for offers</h3>
+                        <p class="text-muted">Search for offers that might be interesting for you.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box">
+                        <i class="fa fa-4x fa-handshake-o text-primary sr-icons"></i>
+                        <h3>Accept offers</h3>
+                        <p class="text-muted">Accept suggestions, which fit your skills and needs.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box">
+                        <i class="fa fa-4x fa-commenting text-primary sr-icons"></i>
+                        <h3>Rate trades</h3>
+                        <p class="text-muted">Rate the trade and the person you traded with, to have a fair and transparent market.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <form (submit)="onRegisterSubmit()">
-          <div class="form-group">
-            <label>Name</label>
-            <input type="text" [(ngModel)]="name" name="name" class="form-control">
-          </div>
-          <div class="form-group">
-            <label>Username</label>
-            <input type="text" [(ngModel)]="username" name="username" class="form-control">
-          </div>
-          <div class="form-group">
-            <label>Email</label>
-            <input type="email" [(ngModel)]="email" name="email" class="form-control" >
-          </div>
-          <div class="form-group">
-            <label>Password</label>
-            <input type="password" [(ngModel)]="password" name="password" class="form-control">
-          </div>
-          <input type="submit" class="btn btn-default btn-xl sr-button" value="Register">
-        </form>
-        <div class="service-box">
+    <section class="no-padding" id="portfolio">
+        <div class="container-fluid">
+            <div class="row no-gutter popup-gallery">
+                <div class="col-lg-4 col-sm-6">
+                    <div class="portfolio-box">
+                        <img src="../../assets/construction.jpg" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Constructions
+                                </div>
+                                <div class="project-name">
+                                    From building a terrace to painting fence..
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="portfolio-box">
+                        <img src="../../assets/garden.jpg" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Garden
+                                </div>
+                                <div class="project-name">
+                                    Be it mowing the lawn to cut down a tree..
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="portfolio-box">
+                        <img src="../../assets/it.jpg" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    IT
+                                </div>
+                                <div class="project-name">
+                                    Programming, Hardware repair or installation
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="portfolio-box">
+                        <img src="../../../assets/vehicles.jpg" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Vehicles
+                                </div>
+                                <div class="project-name">
+                                    From changing tires to fixing the front lights
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="portfolio-box">
+                        <img src="../../../assets/textile.jpg" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Textile
+                                </div>
+                                <div class="project-name">
+                                    Either fixing or creating .. 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+	                <div class="portfolio-box">
+                        <img src="../../../assets/household.jpg" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Household
+                                </div>
+                                <div class="project-name">
+                                    Any help within the house..
+                                </div>
+                            </div>
+                        </div>
+                    <div>
+                </div>
+            </div>
+        		</div>
+        	</div>
         </div>
-      </div>
-      </div>
-  </section>
+    </section>
 
-  <section id="contact">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 text-center">
-          <h2 class="section-heading">Contact us!</h2>
-          <hr class="primary">
-          <p>Any concerns, questions or feedback? Just send us an e-mail or call one of our neighbor trade experts</p>
+	<section class="bg-primary" id="register">
+			<div class="row">
+					<div class="service-box text-center">
+						<h2 class="section-heading">Register and start trading!</h2>
+                    	
+						<form (submit)="onRegisterSubmit()">
+							<div class="form-group">
+								<label>Name</label>
+								<input type="text" [(ngModel)]="name" name="name" class="form-control">
+							</div>
+							<div class="form-group">
+								<label>Username</label>
+								<input type="text" [(ngModel)]="username" name="username" class="form-control">
+							</div>
+							<div class="form-group">
+								<label>Email</label>
+								<input type="email" [(ngModel)]="email" name="email" class="form-control" >
+							</div>
+							<div class="form-group">
+								<label>Password</label>
+								<input type="password" [(ngModel)]="password" name="password" class="form-control">
+							</div>
+							<input type="submit" class="btn btn-default btn-xl sr-button" value="Register">
+						</form>
+					</div>
+					
+            </div>
+    </section>
+    
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Contact us!</h2>
+                    <hr class="primary">
+                    <p>Any concerns, questions or feedback? Just send us an e-mail or call one of our neighbor trade experts</p>
+                </div>
+                <div class="col-lg-4 col-lg-offset-2 text-center">
+                    <i class="fa fa-phone fa-3x sr-contact"></i>
+                    <p>123-456-6789</p>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <i class="fa fa-envelope-o fa-3x sr-contact"></i>
+                    <p><a href="mailto:your-email@your-domain.com">experts@neighbortrade.com</a></p>
+                </div>
+            </div>
         </div>
-        <div class="col-lg-4 col-lg-offset-2 text-center">
-          <i class="fa fa-phone fa-3x sr-contact"></i>
-          <p>123-456-6789</p>
-        </div>
-        <div class="col-lg-4 text-center">
-          <i class="fa fa-envelope-o fa-3x sr-contact"></i>
-          <p><a href="mailto:your-email@your-domain.com">experts@neighbortrade.com</a></p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
+    
     <!-- jQuery -->
-    <!-- <script src="vendor/jquery/jquery.min.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <!-- <script src="vendor/jquery/jquery.min.js"></script> -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <!--<script src="vendor/bootstrap/js/bootstrap.min.js"></script>-->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
+    crossorigin="anonymous"></script>
 
     <!-- Plugin JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
