@@ -17,6 +17,6 @@
     "passport": "*",
     "passport-jwt": "*"
   },
-  "author": "Brad Traversy",
-  "license": "ISC"
+  "author": "team 40",
+  "license": "SEBA"
 }

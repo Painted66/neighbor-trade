@@ -96,14 +96,14 @@
  }
  .navbar-default .nav>li.active>a,.navbar-default .nav>li.active>a:focus{
  	color:#02C5FF!important;
- 	background-color:transparent
+ 	background-color:#02C5FF
  }
  .navbar-default .nav>li.active>a:focus:hover,.navbar-default .nav>li.active>a:hover{
- 	background-color:transparent
+ 	background-color:#02C5FF
  }
  @media (min-width:768px){
  	.navbar-default{
- 		background-color:transparent;
+ 		background-color:#02C5FF;
  		border-color:rgba(255,255,255,.3)
  	}
  	.navbar-default .navbar-header .navbar-brand{color:rgba(255,255,255,.7)
@@ -136,13 +136,14 @@
  }
  }
  header{
- 	min-height:auto;
+ 	min-height:auto!important;
  	-webkit-background-size:cover;
  	-moz-background-size:cover;
  	background-size:cover;
  	-o-background-size:cover;
  	background-position:center;
- 	background-image:url(assets/header2.jpg);color:#fff
+ 	background-image:url(/assets/header2.jpg);
+ 	color:#fff
  }
  header .header-content{
  	padding:100px 15px
@@ -180,16 +181,15 @@
  	color:rgba(255,255,255,.9);
  	font-size:14px;
  }
- @media (min-width:768px){
+@media (min-width:768px){
  	header{
- 		min-height:100%
+ 		min-height:auto;
+ 		top:50px;
+ 		padding-top:100px;
+ 		padding-bottom:100px;
  	}
  	header .header-content{
- 		position:absolute;
  		top:50%;
- 		-webkit-transform:translateY(-50%);
- 		-ms-transform:translateY(-50%);
- 		transform:translateY(-50%);
  		padding:0 50px
  	}
  	header .header-content .header-content-inner{
