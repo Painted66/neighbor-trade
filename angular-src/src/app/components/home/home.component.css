@@ -32,7 +32,7 @@
  }
  .navbar-default .nav>li.active>a,.navbar-default .nav>li.active>a:focus{
  	color:#02C5FF!important;
- 	background-color:transparent!imporant
+ 	background-color:transparent;
  }
  .navbar-default .nav>li.active>a:focus:hover,.navbar-default .nav>li.active>a:hover{
  	background-color:transparent

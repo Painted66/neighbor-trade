@@ -18,7 +18,7 @@
  }
  body{
  	font-family:Merriweather,'Helvetica Neue',Arial,sans-serif;
- 	webkit-tap-highlight-color:#222
+ 	webkit-tap-highlight-color:#222;
  }
  .btn,.navbar-default,.navbar-default .navbar-header .navbar-brand,h1,h2,h3,h4,h5,h6{
  	font-family:'Open Sans','Helvetica Neue',Arial,sans-serif
@@ -95,7 +95,7 @@
  	color:#02C5FF
  }
  .navbar-default .nav>li.active>a,.navbar-default .nav>li.active>a:focus{
- 	color:#02C5FF!important;
+ 	color:#FFFFFF!important;
  	background-color:#02C5FF
  }
  .navbar-default .nav>li.active>a:focus:hover,.navbar-default .nav>li.active>a:hover{
@@ -177,7 +177,7 @@
  }
  #registerLink{
  	margin-top:30px;
- 	font-weight:400;	
+ 	font-weight:400;
  	color:rgba(255,255,255,.9);
  	font-size:14px;
  }
@@ -220,11 +220,11 @@
  }
  .service-box{
  	max-width:400px;
- 	margin:50px auto 0
+ 	margin:100px auto 0
  }
  @media (min-width:992px){
  	.service-box{
- 		margin:20px auto 0
+ 		margin:70px auto 0
  	}
  }
  .service-box p{
@@ -251,11 +251,11 @@
  	height:100%;
  	transition:all .35s
  }
- 
+
  #register h2{
  	padding-bottom:40px;
  }
- 
+
  .btn-default.active,.btn-default:active,.btn-primary.active,.btn-primary:active,.open>.dropdown-toggle.btn-default,.open>.dropdown-toggle.btn-primary{
  	background-image:none
  }

@@ -49,7 +49,7 @@ export class NewTradeComponent implements OnInit {
       trade_min_rating: this.trade_min_rating,
       trade_location: this.trade_location,
       trade_max_distance: this.trade_max_distance,
-      trade_demand_recipient: user_id  //has to be changed to get the user Id od the user who creates the trade offer
+      trade_demand_recipient: user_id
     }
 
     //Required Fields
@@ -60,6 +60,7 @@ export class NewTradeComponent implements OnInit {
     // Create new Trade
     this.dbService.createNewTrade(trade).subscribe(data => {
       if(data.success){
+        location.reload();
         this.flashMessage.show('Your trade offer is now listed', {cssClass: 'alert-success', timeout: 3000});
       } else {
         this.flashMessage.show('Something went wrong', {cssClass: 'alert-danger', timeout: 3000});

@@ -39,12 +39,12 @@ export class HomeComponent implements OnInit {
         this.flashMessage.show('You are now logged in', {
           cssClass: 'alert-success',
           timeout: 5000});
-        this.router.navigate(['dashboard']);
+        this.router.navigate(['new-trade']);
       } else {
         this.flashMessage.show(data.msg, {
           cssClass: 'alert-danger',
           timeout: 5000});
-        this.router.navigate(['login']);
+          location.reload();
       }
     });
   }
@@ -63,7 +63,6 @@ export class HomeComponent implements OnInit {
       this.flashMessage.show('Please fill in all fields', {cssClass: 'alert-danger', timeout: 3000});
       return false;
     }
-    console.log("hi");
     // Validate Email
     if(!this.validateService.validateEmail(user.email)){
       this.flashMessage.show('Please use a valid email', {cssClass: 'alert-danger', timeout: 3000});
