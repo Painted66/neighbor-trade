@@ -47,8 +47,12 @@ const TradeSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    trade_location: {
-        type: String,
+    trade_latitude: {
+        type: Number,
+        required: true
+    },
+    trade_longitude: {
+        type: Number,
         required: true
     },
     trade_max_distance: {

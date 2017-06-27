@@ -1,8 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {RouterModule, Routes} from '@angular/router';
+import {ValidateService} from './services/validate.service';
+import {DbService} from './services/db.service';
+import {AuthService} from './services/auth.service';
+import {FlashMessagesModule} from 'angular2-flash-messages';
+import {AuthGuard} from './guards/auth.guard';
+import { AgmCoreModule } from "angular2-google-maps/core";
+import { FormWizardModule } from 'angular2-wizard';
+
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -19,11 +27,6 @@ import { RateTradeComponent } from './components/rate-trade/rate-trade.component
 import { ImpressumComponent } from './components/impressum/impressum.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 
-import {ValidateService} from './services/validate.service';
-import {DbService} from './services/db.service';
-import {AuthService} from './services/auth.service';
-import {FlashMessagesModule} from 'angular2-flash-messages';
-import {AuthGuard} from './guards/auth.guard';
 
 
 
@@ -63,7 +66,15 @@ const appRoutes: Routes =  [
     FormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes),
-    FlashMessagesModule
+    FlashMessagesModule,
+    AgmCoreModule.forRoot({
+      apiKey: "AIzaSyD40UovXGbrmaYjaCHxqBY7r5wEo_CRQxY",
+      libraries: ["places"]
+    }),
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    FormWizardModule
   ],
   providers: [ValidateService, AuthService, AuthGuard, DbService],
   bootstrap: [AppComponent]

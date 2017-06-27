@@ -19,7 +19,7 @@ export class ValidateService {
   }
 
   validateNewTrade(trade){
-    if(trade.trade_offer_title == undefined || trade.trade_offer_description == undefined ||  trade.trade_offer_categorie == undefined ||  trade.trade_offer_tags == undefined ||  trade.trade_demand_title == undefined ||  trade.trade_demand_description == undefined ||  trade.trade_demand_categorie == undefined ||  trade.trade_demand_tags == undefined ||  trade.trade_deadline == undefined ||  trade.trade_min_rating == undefined ||  trade.trade_location == undefined ||  trade.trade_max_distance == undefined){
+    if(trade.trade_offer_title == undefined || trade.trade_offer_description == undefined ||  trade.trade_offer_categorie == undefined ||  trade.trade_offer_tags == undefined ||  trade.trade_demand_title == undefined ||  trade.trade_demand_description == undefined ||  trade.trade_demand_categorie == undefined ||  trade.trade_demand_tags == undefined ||  trade.trade_deadline == undefined ||  trade.trade_min_rating == undefined ||  trade.trade_latitude == undefined ||   trade.trade_longitude == undefined ||  trade.trade_max_distance == undefined){
       return false;
     } else {
       return true;

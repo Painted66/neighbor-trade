@@ -27,27 +27,6 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  onLoginSubmit(){
-    const user = {
-      username: this.username,
-      password: this.password,
-    }
-
-    this.authService.authenticateUser(user).subscribe(data => {
-      if(data.success){
-        this.authService.storeUserData(data.token, data.user);
-        this.flashMessage.show('You are now logged in', {
-          cssClass: 'alert-success',
-          timeout: 5000});
-        this.router.navigate(['new-trade']);
-      } else {
-        this.flashMessage.show(data.msg, {
-          cssClass: 'alert-danger',
-          timeout: 5000});
-          location.reload();
-      }
-    });
-  }
 
   onRegisterSubmit(){
 

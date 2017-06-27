@@ -18,7 +18,8 @@ router.post('/new-trade', (req, res, next) => {
         trade_demand_recipient: req.body.trade_demand_recipient,
         trade_deadline: req.body.trade_deadline,
         trade_min_rating: req.body.trade_min_rating,
-        trade_location: req.body.trade_location,
+        trade_latitude: req.body.trade_latitude,
+        trade_longitude: req.body.trade_longitude,
         trade_max_distance: req.body.trade_max_distance
     });
 

@@ -1,5 +1,5 @@
-<h2 class="page-header">Login</h2>
 <form (submit)="onLoginSubmit()">
+  <flash-messages></flash-messages>
   <div class="form-group">
     <label>Username</label>
     <input type="text" class="form-control" [(ngModel)]="username" name="username">
