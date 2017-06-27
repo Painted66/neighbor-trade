@@ -58,4 +58,10 @@ export class RegisterComponent implements OnInit {
     });
 
   }
+
+  onClickNext(){
+    let classes
+
+  }
+
 }

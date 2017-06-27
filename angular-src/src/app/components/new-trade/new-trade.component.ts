@@ -27,6 +27,7 @@ export class NewTradeComponent implements OnInit {
   trade_location: String;
   trade_max_distance: Number;
   user:Object;
+  currentStep = 1;
 
   public latitude: number;
   public longitude: number;
@@ -77,7 +78,7 @@ export class NewTradeComponent implements OnInit {
           this.latitude = place.geometry.location.lat();
           this.longitude = place.geometry.location.lng();
           this.zoom = 12;
-          });
+           });
       });
     });
   }
@@ -127,4 +128,19 @@ export class NewTradeComponent implements OnInit {
     });
   }
 
+  nextStep(){
+    var current = document.getElementById("Step"+this.currentStep);
+    this.currentStep++;
+    var next = document.getElementById("Step"+this.currentStep);
+    next.style.display = "inline";
+    current.style.display = "none";
+  }
+
+  preStep(){
+    var current = document.getElementById("Step"+this.currentStep);
+    this.currentStep--;
+    var next = document.getElementById("Step"+this.currentStep);
+    next.style.display = "inline";
+    current.style.display = "none";
+  }
 }

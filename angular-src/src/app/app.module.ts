@@ -9,7 +9,7 @@ import {AuthService} from './services/auth.service';
 import {FlashMessagesModule} from 'angular2-flash-messages';
 import {AuthGuard} from './guards/auth.guard';
 import { AgmCoreModule } from "angular2-google-maps/core";
-import { FormWizardModule } from 'angular2-wizard';
+import { StarRatingModule } from 'angular-star-rating';
 
 
 import { AppComponent } from './app.component';
@@ -74,7 +74,7 @@ const appRoutes: Routes =  [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    FormWizardModule
+    StarRatingModule
   ],
   providers: [ValidateService, AuthService, AuthGuard, DbService],
   bootstrap: [AppComponent]
