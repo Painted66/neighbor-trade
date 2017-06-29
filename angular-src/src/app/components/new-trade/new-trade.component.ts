@@ -8,6 +8,10 @@ import {  Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core
 import { FormControl } from "@angular/forms";
 import { MapsAPILoader } from 'angular2-google-maps/core';
 
+import {IStarRatingOnRatingChangeEven} from "angular-star-rating/src/star-rating-struct";
+
+
+
 @Component({
   selector: 'app-new-trade',
   templateUrl: './new-trade.component.html',
@@ -143,4 +147,12 @@ export class NewTradeComponent implements OnInit {
     next.style.display = "inline";
     current.style.display = "none";
   }
+
+  triggerResize(recenter: boolean) {
+
+  }
+
+  onRatingChange = ($event:IStarRatingOnRatingChangeEven) => {
+    this.trade_min_rating = $event.rating;
+  };
 }
