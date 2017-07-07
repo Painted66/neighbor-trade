@@ -16,6 +16,7 @@ var NavbarComponent = (function () {
         this.authService = authService;
         this.router = router;
         this.flashMessage = flashMessage;
+        this.isCollapsed = true;
     }
     NavbarComponent.prototype.ngOnInit = function () {
     };

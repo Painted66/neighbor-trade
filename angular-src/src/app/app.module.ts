@@ -10,6 +10,7 @@ import {FlashMessagesModule} from 'angular2-flash-messages';
 import {AuthGuard} from './guards/auth.guard';
 import { AgmCoreModule } from "angular2-google-maps/core";
 import { StarRatingModule } from 'angular-star-rating';
+import { CollapseDirective } from 'ngx-bootstrap'
 
 
 import { AppComponent } from './app.component';
@@ -59,7 +60,8 @@ const appRoutes: Routes =  [
     NewTradeComponent,
     RateTradeComponent,
     ImpressumComponent,
-    PrivacyPolicyComponent
+    PrivacyPolicyComponent,
+    CollapseDirective
   ],
   imports: [
     BrowserModule,
