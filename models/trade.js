@@ -58,6 +58,10 @@ const TradeSchema = mongoose.Schema({
     trade_max_distance: {
         type: String,
         required: true
+    },
+    trade_status: {
+        type: String,
+        required: true
     }
 });
 

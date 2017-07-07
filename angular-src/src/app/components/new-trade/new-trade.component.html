@@ -8,15 +8,16 @@
   <h3 class="page-header">Offer</h3>
   <div class="form-group">
     <label>Title</label>
-    <input type="text" [(ngModel)]="trade_offer_title" name="trade_offer_title" class="form-control" required>
+    <input type="text" [(ngModel)]="trade_offer_title" name="trade_offer_title" class="form-control" required placeholder="Enter your offer titel">
   </div>
   <div class="form-group">
     <label>Description</label>
-    <textarea type="text" [(ngModel)]="trade_offer_description" name="trade_offer_description" class="form-control" rows="3"></textarea>
+    <textarea type="text" [(ngModel)]="trade_offer_description" name="trade_offer_description" class="form-control" rows="3" placeholder="Enter a description of what you are offering"></textarea>
   </div>
   <div class="form-group">
     <label>Categorie</label>
-    <select type="text"  [(ngModel)]="trade_offer_categorie" name="trade_offer_categorie" class="form-control" required>
+    <select type="text"  [(ngModel)]="trade_offer_categorie" name="trade_offer_categorie" class="form-control" required >
+      <option value="" disabled selected>Select a category</option>
       <option value="Cleaning">Cleaning</option>
       <option value="Crafting">Crafting</option>
       <option value="Garden">Garden</option>
@@ -24,12 +25,15 @@
       <option value="Mechanical">Mechanical</option>
       <option value="Social">Social</option>
       <option value="Technology">Technology</option>
+      <option value="Other">Technology</option>
 	</select>
   </div>
   <div class="form-group">
     <label>Tags</label>
-    <input type="text" [(ngModel)]="trade_offer_tags" name="trade_offer_tags" class="form-control" required>
+    <input type="text" [(ngModel)]="trade_offer_tags" name="trade_offer_tags" class="form-control" required placeholder="Example: garden, cut the lawn, ..." title="Separate tags with a comma">
+
   </div>
+
     <button type="button" class="btn rightButton" (click)="nextStep()">Next</button>
   </div>
 
@@ -38,15 +42,16 @@
   <h3 class="page-header">Demand</h3>
   <div class="form-group">
     <label>Title</label>
-    <input type="text" [(ngModel)]="trade_demand_title" name="trade_demand_title" class="form-control" required>
+    <input type="text" [(ngModel)]="trade_demand_title" name="trade_demand_title" class="form-control" required placeholder="Enter your demand titel">
   </div>
    <div class="form-group">
     <label>Description</label>
-    <textarea [(ngModel)]="trade_demand_description" name="trade_demand_description" class="form-control" rows="3" required></textarea>
+    <textarea [(ngModel)]="trade_demand_description" name="trade_demand_description" class="form-control" rows="3" required placeholder="Enter a description of what you want"></textarea>
   </div>
   <div class="form-group">
     <label>Categorie</label>
     <select type="text" [(ngModel)]="trade_demand_categorie" name="trade_demand_categorie" class="form-control" required>
+      <option value="" disabled selected>Select a category</option>
       <option value="Cleaning">Cleaning</option>
       <option value="Crafting">Crafting</option>
       <option value="Garden">Garden</option>
@@ -54,14 +59,15 @@
       <option value="Mechanical">Mechanical</option>
       <option value="Social">Social</option>
       <option value="Technology">Technology</option>
+      <option value="Other">Technology</option>
 	</select>
   </div>
   <div class="form-group">
     <label>Tags</label>
-    <input type="text" [(ngModel)]="trade_demand_tags" name="trade_demand_tags" class="form-control" required>
+    <input type="text" [(ngModel)]="trade_demand_tags" name="trade_demand_tags" class="form-control" required placeholder="Example: garden, cut the lawn, ..." title="Separate tags with a comma">
   </div>
     <button type="button" class="btn leftButton" (click)="preStep()">Previous</button>
-    <button type="button" class="btn rightButton" (click)="nextStep()">Next</button>
+    <button type="button" class="btn rightButton" (click)="nextStep(); map.triggerResize()">Next</button>
   </div>
 
   <div id="Step3" class="newTradeStep">
@@ -77,13 +83,14 @@
   <div class="form-group">
     <label>Location</label>
     <input placeholder="search for location" autocorrect="on"  [(ngModel)]="trade_location" name="trade_location" spellcheck="on" type="text" class="form-control" #search [formControl]="searchControl">
-    <sebm-google-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom" id="map" >
+    <sebm-google-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom" #map>
       <sebm-google-map-marker [latitude]="latitude" [longitude]="longitude"></sebm-google-map-marker>
     </sebm-google-map>
   </div>
   <div class="form-group">
     <label for="trade_max_distance">Maximal Distance</label>
     <select type="number" [(ngModel)]="trade_max_distance" name="trade_max_distance" id="trade_max_distance" class="form-control" required>
+      <option value="40075" disabled selected>Select a range</option>
       <option value=5>5 km</option>
       <option value=10>10 km</option>
       <option value=15>15 km</option>

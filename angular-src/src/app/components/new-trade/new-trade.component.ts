@@ -103,11 +103,11 @@ export class NewTradeComponent implements OnInit {
       trade_offer_title: this.trade_offer_title,
       trade_offer_description: this.trade_offer_description,
       trade_offer_categorie: this.trade_offer_categorie,
-      trade_offer_tags: this.trade_offer_tags,
+      trade_offer_tags: this.trade_offer_tags.split(","),
       trade_demand_title: this.trade_demand_title,
       trade_demand_description: this.trade_demand_description,
       trade_demand_categorie: this.trade_demand_categorie,
-      trade_demand_tags: this.trade_demand_tags,
+      trade_demand_tags: this.trade_demand_tags.split(","),
       trade_deadline: this.trade_deadline,
       trade_min_rating: this.trade_min_rating,
       trade_latitude: this.latitude,
@@ -115,7 +115,6 @@ export class NewTradeComponent implements OnInit {
       trade_max_distance: this.trade_max_distance,
       trade_demand_recipient: user_id
     }
-
     //Required Fields
     if(!this.validateService.validateNewTrade(trade)){
       this.flashMessage.show('Please fill in all fields', {cssClass: 'alert-danger', timeout: 3000});
@@ -148,9 +147,7 @@ export class NewTradeComponent implements OnInit {
     current.style.display = "none";
   }
 
-  triggerResize(recenter: boolean) {
 
-  }
 
   onRatingChange = ($event:IStarRatingOnRatingChangeEven) => {
     this.trade_min_rating = $event.rating;
