@@ -33,4 +33,29 @@ router.post('/new-trade', (req, res, next) => {
     });
 });
 
+
+router.delete('/delete-trade/:id', (req, res, next) => {
+    var id = req.params.id;
+    Trade.deleteTradeByID(id, (err, trade) => {
+        if(err){
+            res.json({success: false, msg:'Failed to delete the trade'});
+        } else {
+            res.json({success: true, msg:'The Trade is deleted'});
+        }
+    });
+});
+
+router.put ('/update-trade/:id', (req, res, next) => {
+    var id = req.params.id;
+    //TODO https://www.youtube.com/watch?v=5_pvYIbyZlU
+
+    Trade.updateTradeByID(updatedTrade , (err) => {
+        if(err){
+            res.json({success: false, msg:'Failed to update the trade'});
+        } else {
+            res.json({success: true, msg:'The Trade is updated'});
+        }
+    });
+});
+
 module.exports = router;

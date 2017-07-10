@@ -15,4 +15,11 @@ export class DbService {
     return this.http.post('http://localhost:3000/trades/new-trade', trade,{headers: headers})
         .map(res => res.json());
   }
+
+  deleteOneTrade(id) {
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.delete('http://localhost:3000/trades/delete-trade/'+id,{headers: headers})
+        .map(res => res.json());
+  }
 }

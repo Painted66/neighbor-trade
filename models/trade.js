@@ -74,3 +74,11 @@ module.exports.getTradeById = function(id, callback){
 module.exports.addTrade = function(newTrade, callback){
     newTrade.save(callback);
 }
+
+module.exports.deleteTradeByID =  function (id, callback) {
+    Trade.remove(id, callback);
+}
+
+module.exports.updateTradeByID = function ( Trade, callback) {
+    Trade.save(callback);
+}

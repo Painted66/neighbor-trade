@@ -21,6 +21,12 @@ var DbService = (function () {
         return this.http.post('http://localhost:3000/trades/new-trade', trade, { headers: headers })
             .map(function (res) { return res.json(); });
     };
+    DbService.prototype.deleteOneTrade = function (id) {
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.delete('http://localhost:3000/trades/delete-trade/' + id, { headers: headers })
+            .map(function (res) { return res.json(); });
+    };
     return DbService;
 }());
 DbService = __decorate([
