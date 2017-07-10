@@ -33,4 +33,20 @@ router.post('/new-trade', (req, res, next) => {
     });
 });
 
+router.get('/dashboard/:id', (req, res, next) => {
+	var userID = req.params.id;
+	console.log(userID)
+	Trade.findOne({trade_demand_recipient: userID}, function(err, trade){
+    	if(err){
+    		res.json({success: false, answer: err});
+    	}else{
+    		if(!trade){
+    			res.json({success: false, answer: 'no trade found'});
+    		}else{
+    			res.json({success: true, answer: trade});
+    		}
+    	}
+    });
+});
+
 module.exports = router;
