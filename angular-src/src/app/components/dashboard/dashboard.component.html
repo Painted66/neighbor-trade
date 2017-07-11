@@ -1,7 +1,35 @@
 <section>
 	<div class="row text-center">
-		<ul class="text-center">
-			<li>{{answer.trade_offer_categorie}}</li>
-		</ul>
+		<div class="col-lg-12">
+			<h2>Offered Trades</h2>
+			<div *ngFor= "let trade of trades">
+				
+				<div class="col-lg-6">
+					<h3>Offer</h3>
+					<h4>Title</h4>
+					<div>{{trade.trade_offer_title}}</div>
+					<h4>Description</h4>
+					<div>{{trade.trade_offer_description}}</div>
+					<h4>Category</h4>
+					<div>{{trade.trade_offer_categorie}}</div>
+					<h4>User</h4>
+					<div>{{trade.trade_offer_recipient}}</div>
+				</div>
+				
+				<div class="col-lg-6">
+					<h3>Demand</h3>
+					<h4>Title</h4>
+					<div>{{trade.trade_offer_title}}</div>
+					<h4>Description</h4>
+					<div>{{trade.trade_offer_description}}</div>
+					<h4>Category</h4>
+					<div>{{trade.trade_offer_categorie}}</div>
+					<h4>User</h4>
+					<div>{{trade.trade_offer_recipient}}</div>
+				</div>
+				
+			</div>
+			
+		</div>
 	</div>
 </section>

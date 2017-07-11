@@ -11,7 +11,7 @@ import {Router} from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 	userID: Object;
-  	answer: Object;
+  	trades: Object;
 	constructor(
       private validateService: ValidateService,
       private dbService: DbService,
@@ -26,9 +26,10 @@ export class DashboardComponent implements OnInit {
     // Create new Trade
     this.dbService.getTradesByUserID(this.userID).subscribe(data => {
       if(data.success){
-      	this.answer = data.answer;
+      	this.trades = data.trades;
+      	
       } else {
-      	this.answer = "FEEHLER";
+      	
       }
     });
   }
