@@ -37,5 +37,9 @@ export class TradeViewComponent implements OnInit {
 			});
   		});
   }
+  
+  goToRateTrade(id: string){
+  	this.router.navigate(["/rate-trade", id]);
+  }
 
 }

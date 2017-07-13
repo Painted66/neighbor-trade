@@ -1,3 +1,34 @@
-<p>
-  rate-trade works!
-</p>
+<section>
+
+<div *ngFor = "let trade of trades">
+<form (submit)="onRegisterSubmit(trade._id, trade.trade_demand_recipient)">
+  <div class="form-group">
+    <label>Puncuality</label>
+    <star-rating-comp [starType]="'svg'" [staticColor]="'ok'" [size]="'large'" [rating]="1" (onRatingChange)="onPunctualityRatingChange($event)"></star-rating-comp>
+  </div>
+  <div class="form-group">
+    <label>Quality of work</label>
+    <star-rating-comp [starType]="'svg'" [staticColor]="'ok'" [size]="'large'" [rating]="1" (onRatingChange)="onQualityRatingChange($event)"></star-rating-comp>
+  </div>
+  <div class="form-group">
+    <label>Responsiveness</label>
+    <star-rating-comp [starType]="'svg'" [staticColor]="'ok'" [size]="'large'" [rating]="1" (onRatingChange)="onResponsivenessRatingChange($event)"></star-rating-comp>
+  </div>
+  <div class="form-group">
+    <label>Duration</label>
+    <star-rating-comp [starType]="'svg'" [staticColor]="'ok'" [size]="'large'" [rating]="1" (onRatingChange)="onDurationRatingChange($event)"></star-rating-comp>
+  </div>
+  <div class="form-group">
+    <label>Reliability</label>
+    <star-rating-comp [starType]="'svg'" [staticColor]="'ok'" [size]="'large'" [rating]="1" (onRatingChange)="onReliabilityRatingChange($event)"></star-rating-comp>
+  </div>
+  <div class="form-group">
+    <label>Friendliness</label>
+    <star-rating-comp [starType]="'svg'" [staticColor]="'ok'" [size]="'large'" [rating]="1" (onRatingChange)="onFriendlinessRatingChange($event)"></star-rating-comp>
+  </div>
+  
+  <input type="submit" class="btn btn-primary rightButton" value="Submit">
+  
+</form>
+</div>
+</section>

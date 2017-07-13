@@ -15,6 +15,14 @@ export class DbService {
 		return this.http.post('http://localhost:3000/trades/new-trade', trade,{headers: headers})
 			.map(res => res.json());
 	}
+	
+	createNewRating(rating){
+		console.log(rating);
+		let headers = new Headers();
+		headers.append('Content-Type','application/json');
+		return this.http.post('http://localhost:3000/trades/rate-trade', rating,{headers: headers})
+			.map(res => res.json());
+	}
 
 	getTradesByUserID(userID){
 		let headers = new Headers();
