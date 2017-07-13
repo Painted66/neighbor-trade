@@ -7,7 +7,7 @@
 			</div>
 			</a>
 			
-			<div class="panel-content collapsed" id="openTrades" [collapse]="!isCollapsed">
+			<div class="panel-content collapsed" id="openTrades" [collapse]="isCollapsed">
 				<div class="well col-xs-12 text-center" *ngFor = "let trade of trades | filter:'searching'">
 						<div class="wellcol-xs-12 text-center">
 							<table class="table-striped text-center col-xs-12">
