@@ -3,15 +3,16 @@ import {ValidateService} from '../../services/validate.service';
 import {DbService} from '../../services/db.service';
 import {FlashMessagesService} from 'angular2-flash-messages';
 import {Router} from '@angular/router';
+import {FilterPipe} from '../../filter.pipe';
 
 @Component({
   selector: 'app-trades',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
 	userID: Object;
-  	trades: Object;
+  	trades: JSON;
 	constructor(
       private validateService: ValidateService,
       private dbService: DbService,
@@ -32,6 +33,10 @@ export class DashboardComponent implements OnInit {
       	
       }
     });
+  }
+  
+  goToTradeDetails(id: string){
+  	this.router.navigate(["/trade-view", id]);
   }
 
 }

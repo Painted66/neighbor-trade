@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const config = require('../config/database');
-
+const schema = mongoose.Schema;
 // Trade Schema
 const TradeSchema = mongoose.Schema({
     trade_offer_title: {
@@ -19,7 +19,7 @@ const TradeSchema = mongoose.Schema({
         type: [String]
     },
     trade_offer_recipient: {
-        type: String
+        type: schema.Types.ObjectId, ref: 'User'
     },
     trade_demand_title: {
         type: String,
@@ -37,7 +37,7 @@ const TradeSchema = mongoose.Schema({
         type: [String]
     },
     trade_demand_recipient: {
-        type: String
+        type: schema.Types.ObjectId, ref: 'User'
     },
     trade_deadline: {
         type: Date,

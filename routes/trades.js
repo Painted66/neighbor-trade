@@ -35,8 +35,22 @@ router.post('/new-trade', (req, res, next) => {
 
 router.get('/dashboard/:id', (req, res, next) => {
 	var userID = req.params.id;
-	console.log(userID)
-	Trade.find({trade_demand_recipient: userID}, function(err, trade){
+	Trade.find({trade_demand_recipient: userID}).populate('trade_offer_recipient').populate('trade_demand_recipient').exec(function(err, trade){
+    	if(err){
+    		res.json({success: false, trades: err});
+    	}else{
+    		if(!trade){
+    			res.json({success: false, trades: 'no trade found'});
+    		}else{
+    			res.json({success: true, trades: trade});
+    		}
+    	}
+    });
+});
+
+router.get('/trade-view/:tradeID', (req, res, next) => {
+	var tradeID = req.params.tradeID;
+	Trade.find({_id: tradeID}, function(err, trade){
     	if(err){
     		res.json({success: false, trades: err});
     	}else{
