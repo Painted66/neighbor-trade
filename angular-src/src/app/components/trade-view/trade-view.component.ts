@@ -42,4 +42,14 @@ export class TradeViewComponent implements OnInit {
   	this.router.navigate(["/rate-trade", id]);
   }
 
+  deleteTrade(id: string){
+	  this.dbService.deleteOneTrade(id).subscribe(data => {
+		  if(data.success){
+			  location.reload();
+			  this.flashMessage.show('Your trade is now deleted', {cssClass: 'alert-success', timeout: 3000});
+		  } else {
+			  this.flashMessage.show('Something went wrong', {cssClass: 'alert-danger', timeout: 3000});
+		  }
+	  });
+  }
 }

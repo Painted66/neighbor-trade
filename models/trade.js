@@ -76,7 +76,7 @@ module.exports.addTrade = function(newTrade, callback){
 }
 
 module.exports.deleteTradeByID =  function (id, callback) {
-    Trade.remove(id, callback);
+    Trade.findByIdAndRemove(id, callback);
 }
 
 module.exports.updateTradeByID = function ( Trade, callback) {

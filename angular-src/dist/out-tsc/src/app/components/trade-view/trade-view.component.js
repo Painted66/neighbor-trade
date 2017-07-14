@@ -37,6 +37,18 @@ var TradeViewComponent = (function () {
     TradeViewComponent.prototype.goToRateTrade = function (id) {
         this.router.navigate(["/rate-trade", id]);
     };
+    TradeViewComponent.prototype.deleteTrade = function (id) {
+        var _this = this;
+        this.dbService.deleteOneTrade(id).subscribe(function (data) {
+            if (data.success) {
+                location.reload();
+                _this.flashMessage.show('Your trade is now deleted', { cssClass: 'alert-success', timeout: 3000 });
+            }
+            else {
+                _this.flashMessage.show('Something went wrong', { cssClass: 'alert-danger', timeout: 3000 });
+            }
+        });
+    };
     return TradeViewComponent;
 }());
 TradeViewComponent = __decorate([
