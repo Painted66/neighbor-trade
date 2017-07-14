@@ -54,6 +54,8 @@ export class TradeViewComponent implements OnInit {
   }
 
   isMyTrade(){
-	return null;
+	const user = localStorage.getItem('user');
+	var userJson = JSON.parse(user);
+	return userJson.id== this.trades[0].trade_demand_recipient;
   }
 }

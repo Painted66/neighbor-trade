@@ -368,3 +368,5 @@
  	color:#fff;
  	background:0 0
  }
+
+[hidden] { display: none !important;}

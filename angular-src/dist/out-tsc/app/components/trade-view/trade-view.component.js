@@ -50,9 +50,13 @@ var TradeViewComponent = (function () {
         });
     };
     TradeViewComponent.prototype.isMyTrade = function () {
-        var user = localStorage.getItem('user');
-        var userJson = JSON.parse(user);
-        return userJson.id == this.trades[0].trade_demand_recipient;
+        var _this = this;
+        this.authService.getProfile().subscribe(function (profile) {
+            _this.user = profile.user;
+        }, function (err) {
+            console.log(err);
+            return false;
+        });
     };
     return TradeViewComponent;
 }());
@@ -69,4 +73,4 @@ TradeViewComponent = __decorate([
         ActivatedRoute])
 ], TradeViewComponent);
 export { TradeViewComponent };
-//# sourceMappingURL=C:/Users/Malte/Dokumente/neighbor-trade/angular-src/src/src/app/components/trade-view/trade-view.component.js.map
+//# sourceMappingURL=C:/Users/Malte/Dokumente/neighbor-trade/angular-src/src/app/components/trade-view/trade-view.component.js.map
