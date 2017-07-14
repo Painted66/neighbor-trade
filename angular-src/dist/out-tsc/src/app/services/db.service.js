@@ -14,6 +14,12 @@ var DbService = (function () {
     function DbService(http) {
         this.http = http;
     }
+    DbService.prototype.deleteOneTrade = function (id) {
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.delete('http://localhost:3000/trades/delete-trade/' + id, { headers: headers })
+            .map(function (res) { return res.json(); });
+    };
     DbService.prototype.createNewTrade = function (trade) {
         console.log(trade);
         var headers = new Headers();
@@ -21,10 +27,42 @@ var DbService = (function () {
         return this.http.post('http://localhost:3000/trades/new-trade', trade, { headers: headers })
             .map(function (res) { return res.json(); });
     };
-    DbService.prototype.deleteOneTrade = function (id) {
+    DbService.prototype.createNewRating = function (rating) {
+        console.log(rating);
         var headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        return this.http.delete('http://localhost:3000/trades/delete-trade/' + id, { headers: headers })
+        return this.http.post('http://localhost:3000/trades/rate-trade', rating, { headers: headers })
+            .map(function (res) { return res.json(); });
+    };
+    DbService.prototype.getTradesByUserID = function (userID) {
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.get('http://localhost:3000/trades/dashboard/' + userID, { headers: headers })
+            .map(function (res) { return res.json(); });
+    };
+    DbService.prototype.getTradeByTradeID = function (tradeID) {
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.get('http://localhost:3000/trades/trade-view/' + tradeID, { headers: headers })
+            .map(function (res) { return res.json(); });
+    };
+    DbService.prototype.findTrades = function (offerTitle, trade_offer_categorie, trade_demand_title, trade_demand_categorie, trade_demand_tags, trade_offer_tags) {
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        var query = {};
+        if (offerTitle !== undefined && offerTitle !== "")
+            query['trade_offer_title'] = offerTitle;
+        if (trade_offer_categorie !== undefined && trade_offer_categorie !== "")
+            query['trade_offer_categorie'] = trade_offer_categorie;
+        if (trade_demand_title !== undefined && trade_demand_title !== "")
+            query['trade_demand_title'] = trade_demand_title;
+        if (trade_demand_categorie !== undefined && trade_demand_categorie !== "")
+            query['trade_demand_categorie'] = trade_demand_categorie;
+        if (trade_demand_tags !== undefined && trade_demand_tags !== "")
+            query['trade_demand_tags'] = trade_demand_tags;
+        if (trade_offer_tags !== undefined && trade_offer_tags !== "")
+            query['trade_offer_tags'] = trade_offer_tags;
+        return this.http.post('http://localhost:3000/trades/trades/', query, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     return DbService;

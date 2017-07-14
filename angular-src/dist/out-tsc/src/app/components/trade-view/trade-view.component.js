@@ -11,41 +11,45 @@ import { Component } from '@angular/core';
 import { ValidateService } from '../../services/validate.service';
 import { DbService } from '../../services/db.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
-import { Router } from '@angular/router';
-var DashboardComponent = (function () {
-    function DashboardComponent(validateService, dbService, flashMessage, router) {
+import { Router, ActivatedRoute } from '@angular/router';
+var TradeViewComponent = (function () {
+    function TradeViewComponent(validateService, dbService, flashMessage, router, activatedRoute) {
         this.validateService = validateService;
         this.dbService = dbService;
         this.flashMessage = flashMessage;
         this.router = router;
+        this.activatedRoute = activatedRoute;
+        this.tmpRoute = activatedRoute;
     }
-    DashboardComponent.prototype.ngOnInit = function () {
+    TradeViewComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.userID = JSON.parse(localStorage.getItem('user')).id;
-        // Create new Trade
-        this.dbService.getTradesByUserID(this.userID).subscribe(function (data) {
-            if (data.success) {
-                _this.trades = data.trades;
-            }
-            else {
-            }
+        this.tmpRoute.params.subscribe(function (params) {
+            _this.id = params["id"];
+            _this.dbService.getTradeByTradeID(_this.id).subscribe(function (data) {
+                if (data.success) {
+                    _this.trades = data.trades;
+                }
+                else {
+                }
+            });
         });
     };
-    DashboardComponent.prototype.goToTradeDetails = function (id) {
-        this.router.navigate(["/trade-view", id]);
+    TradeViewComponent.prototype.goToRateTrade = function (id) {
+        this.router.navigate(["/rate-trade", id]);
     };
-    return DashboardComponent;
+    return TradeViewComponent;
 }());
-DashboardComponent = __decorate([
+TradeViewComponent = __decorate([
     Component({
-        selector: 'app-trades',
-        templateUrl: './dashboard.component.html',
-        styleUrls: ['./dashboard.component.css'],
+        selector: 'app-trade-view',
+        templateUrl: './trade-view.component.html',
+        styleUrls: ['./trade-view.component.css']
     }),
     __metadata("design:paramtypes", [ValidateService,
         DbService,
         FlashMessagesService,
-        Router])
-], DashboardComponent);
-export { DashboardComponent };
-//# sourceMappingURL=C:/Users/Malte/Dokumente/neighbor-trade/angular-src/src/src/app/components/dashboard/dashboard.component.js.map
+        Router,
+        ActivatedRoute])
+], TradeViewComponent);
+export { TradeViewComponent };
+//# sourceMappingURL=C:/Users/Malte/Dokumente/neighbor-trade/angular-src/src/src/app/components/trade-view/trade-view.component.js.map

@@ -27,6 +27,9 @@ import { NewTradeComponent } from './components/new-trade/new-trade.component';
 import { RateTradeComponent } from './components/rate-trade/rate-trade.component';
 import { ImpressumComponent } from './components/impressum/impressum.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
+import { FilterPipe } from './filter.pipe';
+import { TradeViewComponent } from './components/trade-view/trade-view.component';
+import { RatingComponent } from './components/rating/rating.component';
 
 
 
@@ -42,7 +45,8 @@ const appRoutes: Routes =  [
   {path:'trades', component: TradesComponent, canActivate:[AuthGuard]},
   {path:'search-result', component: SearchResultsComponent, canActivate:[AuthGuard]},
   {path:'new-trade', component: NewTradeComponent, canActivate:[AuthGuard]},
-  {path:'rate-trade', component: RateTradeComponent, canActivate:[AuthGuard]}
+  {path:'rate-trade/:id', component: RateTradeComponent, canActivate:[AuthGuard]},
+  {path:'trade-view/:id', component: TradeViewComponent, canActivate:[AuthGuard]}
 ]
 
 @NgModule({
@@ -61,7 +65,10 @@ const appRoutes: Routes =  [
     RateTradeComponent,
     ImpressumComponent,
     PrivacyPolicyComponent,
-    CollapseDirective
+    CollapseDirective,
+    FilterPipe,
+    TradeViewComponent,
+    RatingComponent,
   ],
   imports: [
     BrowserModule,

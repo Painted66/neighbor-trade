@@ -8,10 +8,69 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { Component } from '@angular/core';
+import { ValidateService } from '../../services/validate.service';
+import { DbService } from '../../services/db.service';
+import { FlashMessagesService } from 'angular2-flash-messages';
+import { Router, ActivatedRoute } from '@angular/router';
 var RateTradeComponent = (function () {
-    function RateTradeComponent() {
+    function RateTradeComponent(validateService, dbService, flashMessage, router, activatedRoute) {
+        var _this = this;
+        this.validateService = validateService;
+        this.dbService = dbService;
+        this.flashMessage = flashMessage;
+        this.router = router;
+        this.activatedRoute = activatedRoute;
+        this.onPunctualityRatingChange = function ($event) {
+            _this.punctuality = $event.rating;
+        };
+        this.onQualityRatingChange = function ($event) {
+            _this.quality = $event.rating;
+        };
+        this.onResponsivenessRatingChange = function ($event) {
+            _this.responsiveness = $event.rating;
+        };
+        this.onDurationRatingChange = function ($event) {
+            _this.duration = $event.rating;
+        };
+        this.onReliabilityRatingChange = function ($event) {
+            _this.reliability = $event.rating;
+        };
+        this.onFriendlinessRatingChange = function ($event) {
+            _this.friendliness = $event.rating;
+        };
+        this.tmpRoute = activatedRoute;
     }
     RateTradeComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.tmpRoute.params.subscribe(function (params) {
+            _this.id = params["id"];
+            _this.dbService.getTradeByTradeID(_this.id).subscribe(function (data) {
+                if (data.success) {
+                    _this.trades = data.trades;
+                }
+                else {
+                }
+            });
+        });
+    };
+    RateTradeComponent.prototype.onRegisterSubmit = function (trade_id, user_id) {
+        var rating = {
+            punctuality: this.punctuality,
+            work_quality: this.quality,
+            responsiveness: this.responsiveness,
+            duration: this.duration,
+            reliability: this.reliability,
+            friendliness: this.friendliness,
+            trade: trade_id,
+            user: user_id
+        };
+        this.dbService.createNewRating(rating).subscribe(function (data) {
+            if (data.success) {
+                location.reload();
+            }
+            else {
+            }
+        });
     };
     return RateTradeComponent;
 }());
@@ -21,7 +80,11 @@ RateTradeComponent = __decorate([
         templateUrl: './rate-trade.component.html',
         styleUrls: ['./rate-trade.component.css']
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [ValidateService,
+        DbService,
+        FlashMessagesService,
+        Router,
+        ActivatedRoute])
 ], RateTradeComponent);
 export { RateTradeComponent };
 //# sourceMappingURL=C:/Users/Malte/Dokumente/neighbor-trade/angular-src/src/src/app/components/rate-trade/rate-trade.component.js.map
