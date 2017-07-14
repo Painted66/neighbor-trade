@@ -30,11 +30,11 @@
 									</td>
 								</tr>
 								<tr>
-									<td class="text-left">
-										{{trade.trade_offer_recipient}}
+									<td class="text-left" (click)="goToUserProfile(trade.trade_offer_recipient._id)">
+										<a>{{trade.trade_offer_recipient}}</a>
 									</td>
-									<td class="text-right">
-										{{trade.trade_demand_recipient.username}}
+									<td class="text-right" (click)="goToUserProfile(trade.trade_demand_recipient._id)">
+										<a>{{trade.trade_demand_recipient.username}}</a>
 									</td>
 								</tr>
 								<tr>

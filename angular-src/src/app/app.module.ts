@@ -30,6 +30,7 @@ import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-poli
 import { FilterPipe } from './filter.pipe';
 import { TradeViewComponent } from './components/trade-view/trade-view.component';
 import { RatingComponent } from './components/rating/rating.component';
+import { MyProfileComponent } from './components/my-profile/my-profile.component';
 
 
 
@@ -41,12 +42,14 @@ const appRoutes: Routes =  [
   {path:'impressum', component: ImpressumComponent},
   {path:'private-policy', component: PrivacyPolicyComponent},
   {path:'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
-  {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]},
+  {path:'my-profile', component: MyProfileComponent, canActivate:[AuthGuard]},
+  {path:'my-profile/:id', component: MyProfileComponent, canActivate:[AuthGuard]},
   {path:'trades', component: TradesComponent, canActivate:[AuthGuard]},
   {path:'search-result', component: SearchResultsComponent, canActivate:[AuthGuard]},
   {path:'new-trade', component: NewTradeComponent, canActivate:[AuthGuard]},
   {path:'rate-trade/:id', component: RateTradeComponent, canActivate:[AuthGuard]},
-  {path:'trade-view/:id', component: TradeViewComponent, canActivate:[AuthGuard]}
+  {path:'trade-view/:id', component: TradeViewComponent, canActivate:[AuthGuard]},
+  {path:'profile/:id', component: ProfileComponent, canActivate:[AuthGuard]}
 ]
 
 @NgModule({
@@ -69,6 +72,7 @@ const appRoutes: Routes =  [
     FilterPipe,
     TradeViewComponent,
     RatingComponent,
+    MyProfileComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../services/auth.service';
-import {Router, ActivatedRoute} from '@angular/router';
+import {Router} from '@angular/router';
 import {DbService} from '../../services/db.service';
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  selector: 'app-my-profile',
+  templateUrl: './my-profile.component.html',
+  styleUrls: ['./my-profile.component.css']
 })
-export class ProfileComponent implements OnInit {
+export class MyProfileComponent implements OnInit {
   user:Object;
   userID:String;
   trades:Object;
@@ -21,24 +21,16 @@ export class ProfileComponent implements OnInit {
   reliability=0;
   friendliness=0;
   ratingCount=0;
-  overallRating = 0;
 
-  	tmpRoute;
-  	
   constructor(private authService:AuthService,
       		private dbService: DbService, 
-  			private router:Router,
-      		private activatedRoute: ActivatedRoute) 
-      		{ 
-      		
-  				this.tmpRoute = activatedRoute;
-      		}
+  			private router:Router) { }
 
   ngOnInit() {
-  	this.tmpRoute.params.subscribe(params => {
-  		this.userID = params["id"];
-  		console.log(this.userID);
-  		this.dbService.getUserRatingsByUserID(this.userID).subscribe(data => {
+    this.authService.getProfile().subscribe(profile => {
+          this.user = profile.user;
+          this.userID = profile.user._id;
+          this.dbService.getRatingsByUserID(this.userID).subscribe(data => {
 			  if(data.success){
 				this.ratings = data.ratings;
 				console.log(data.ratings);
@@ -51,28 +43,23 @@ export class ProfileComponent implements OnInit {
 					this.duration += data.ratings[this.ratingCount].duration;
 					this.reliability += data.ratings[this.ratingCount].reliability;
 					this.friendliness += data.ratings[this.ratingCount].friendliness;
-					this.user = data.ratings[this.ratingCount].user;
 					this.ratingCount += 1;
-					
 				}
+				
 				this.punctuality = this.punctuality/this.ratingCount;
 				this.work_quality = this.work_quality/this.ratingCount;
 				this.responsiveness = this.responsiveness/this.ratingCount;
 				this.duration = this.duration/this.ratingCount;
 				this.reliability  = this.reliability/this.ratingCount;
 				this.friendliness  = this.friendliness/this.ratingCount;
-				
-				this.overallRating = (this.punctuality 
-									+ this.work_quality 
-									+ this.responsiveness 
-									+ this.duration 
-									+ this.reliability 
-									+ this.friendliness)/6;
 			  } else {
 			  }
 			});
-  		
-  	});
+        },
+        err => {
+          console.log(err);
+          return false;
+    });
     
     
   }

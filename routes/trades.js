@@ -130,6 +130,38 @@ router.get('/rating/:tradeID', (req, res, next) => {
     });
 });
 
+router.get('/my-profile/:id', (req, res, next) => {
+	var user_id = req.params.id;
+	console.log(user_id);
+	Rating.find({user: user_id}).populate('user').exec(function(err, rating){
+    	if(err){
+    		res.json({success: false, ratings: err});
+    	}else{
+    		if(!rating){
+    			res.json({success: false, ratings: 'no trade found'});
+    		}else{
+    			res.json({success: true, ratings: rating});
+    		}
+    	}
+    });
+});
+
+router.get('/profile/:id', (req, res, next) => {
+	var user_id = req.params.id;
+	console.log(user_id);
+	Rating.find({user: user_id}).populate('user').exec(function(err, rating){
+    	if(err){
+    		res.json({success: false, ratings: err});
+    	}else{
+    		if(!rating){
+    			res.json({success: false, ratings: 'no trade found'});
+    		}else{
+    			res.json({success: true, ratings: rating});
+    		}
+    	}
+    });
+});
+
 router.post('/trades', (req, res, next) => {
 	var offer_title = req.body;
 	console.log(offer_title);

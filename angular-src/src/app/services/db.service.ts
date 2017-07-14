@@ -29,7 +29,23 @@ export class DbService {
 		return this.http.post('http://localhost:3000/trades/rate-trade', rating,{headers: headers})
 			.map(res => res.json());
 	}
-
+	
+	getRatingsByUserID(userID){
+		console.log(userID);
+		let headers = new Headers();
+		headers.append('Content-Type','application/json');
+		return this.http.get('http://localhost:3000/trades/my-profile/'+userID, {headers: headers})
+			.map(res => res.json());
+	}
+	
+	getUserRatingsByUserID(userID){
+		console.log(userID);
+		let headers = new Headers();
+		headers.append('Content-Type','application/json');
+		return this.http.get('http://localhost:3000/trades/profile/'+userID, {headers: headers})
+			.map(res => res.json());
+	}
+	
 	getTradesByUserID(userID){
 		let headers = new Headers();
 		headers.append('Content-Type','application/json');
