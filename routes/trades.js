@@ -105,4 +105,20 @@ router.get('/rating/:tradeID', (req, res, next) => {
     });
 });
 
+router.post('/trades', (req, res, next) => {
+	var offer_title = req.body;
+	console.log(offer_title);
+	Trade.find(offer_title, function(err, trade){
+    	if(err){
+    		res.json({success: false, trades: err});
+    	}else{
+    		if(!trade){
+    			res.json({success: false, trades: 'no trade found'});
+    		}else{
+    			res.json({success: true, trades: trade});
+    		}
+    	}
+    });
+});
+
 module.exports = router;

@@ -35,8 +35,6 @@ export class DashboardComponent implements OnInit {
     });
   }
   
-  goToTradeDetails(id: string){
-  	this.router.navigate(["/trade-view", id]);
-  }
+
 
 }
