@@ -1,0 +1,28 @@
+#rate-trade {
+	font-family: Merriweather, 'Helvetica Neue', Arial, sans-serif;
+	webkit-tap-highlight-color: #222;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+	color: #FFFFFF;
+	background-color: rgba(0,0,0,0.8);
+	padding: 10px 20px 40px 20px;
+}
+
+@media (min-width: 1200px) {
+    .container{
+        max-width: 870px;
+    }
+	.top-buffer { margin-top:30px; }
+	.top-buffer-container { margin-top:100px; }
+}
+
+#rate-trade-background {
+	webkit-tap-highlight-color: #222;
+	background-image: url(../../../assets/rating.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+	color: #FFFFFF;
+	padding-bottom: 100px;
+}

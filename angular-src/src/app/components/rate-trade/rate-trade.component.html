@@ -1,34 +1,60 @@
-<section>
-
-<div *ngFor = "let trade of trades">
+<section id="rate-trade-background">
+<div  *ngFor = "let trade of trades" >
 <form (submit)="onRegisterSubmit(trade._id, trade.trade_demand_recipient)">
-  <div class="form-group">
-    <label>Puncuality</label>
-    <star-rating-comp [starType]="'svg'" [staticColor]="'ok'" [size]="'large'" [rating]="1" (onRatingChange)="onPunctualityRatingChange($event)"></star-rating-comp>
-  </div>
-  <div class="form-group">
-    <label>Quality of work</label>
-    <star-rating-comp [starType]="'svg'" [staticColor]="'ok'" [size]="'large'" [rating]="1" (onRatingChange)="onQualityRatingChange($event)"></star-rating-comp>
-  </div>
-  <div class="form-group">
-    <label>Responsiveness</label>
-    <star-rating-comp [starType]="'svg'" [staticColor]="'ok'" [size]="'large'" [rating]="1" (onRatingChange)="onResponsivenessRatingChange($event)"></star-rating-comp>
-  </div>
-  <div class="form-group">
-    <label>Duration</label>
-    <star-rating-comp [starType]="'svg'" [staticColor]="'ok'" [size]="'large'" [rating]="1" (onRatingChange)="onDurationRatingChange($event)"></star-rating-comp>
-  </div>
-  <div class="form-group">
-    <label>Reliability</label>
-    <star-rating-comp [starType]="'svg'" [staticColor]="'ok'" [size]="'large'" [rating]="1" (onRatingChange)="onReliabilityRatingChange($event)"></star-rating-comp>
-  </div>
-  <div class="form-group">
-    <label>Friendliness</label>
-    <star-rating-comp [starType]="'svg'" [staticColor]="'ok'" [size]="'large'" [rating]="1" (onRatingChange)="onFriendlinessRatingChange($event)"></star-rating-comp>
-  </div>
+<div class="container top-buffer img-rounded" id="rate-trade">
+	<div class="row">
+	<div class="col-sm-4">
+		<div class="form-group focus">
+			<h3 align="center">Puncuality</h3>
+			<star-rating-comp [labelText]="'My text!'" [starType]="'svg'" [labelText]="'Puncuality'" [labelPosition]="'left'" [size]="'large'" [rating]="0" (onRatingChange)="onPunctualityRatingChange($event)"></star-rating-comp> 
+		</div>
+	</div>
+
+	<div class="col-sm-4">
+		<div class="form-group ">
+			<h3 align="center">Quality of work</h3>
+			<star-rating-comp [starType]="'svg'" [size]="'large'" [rating]="0" (onRatingChange)="onQualityRatingChange($event)"></star-rating-comp>
+		</div>
+	</div>
+	
+	<div class="col-sm-4">
+		<div class="form-group">
+			<h3 align="center">Responsiveness</h3>
+			<star-rating-comp [starType]="'svg'" [size]="'large'" [rating]="0" (onRatingChange)="onResponsivenessRatingChange($event)"></star-rating-comp>
+		</div>
+	</div>
+</div>
   
-  <input type="submit" class="btn btn-primary rightButton" value="Submit">
-  
+	<div class="row top-buffer">
+	<div class="col-sm-4">
+		<div class="form-group">
+			<h3 align="center">Duration</h3>
+			<star-rating-comp [starType]="'svg'" [size]="'large'" [rating]="0" (onRatingChange)="onDurationRatingChange($event)"></star-rating-comp>
+		</div>
+	</div>
+	<div class="col-sm-4">
+		<div class="form-group">
+			<h3 align="center">Reliability</h3>
+			<star-rating-comp [starType]="'svg'" [size]="'large'" [rating]="0" (onRatingChange)="onReliabilityRatingChange($event)"></star-rating-comp>
+		</div>
+	</div>
+
+	<div class="col-sm-4">
+		<div class="form-group">
+			<h3 align="center">Friendlines</h3>
+			<star-rating-comp [starType]="'svg'" [size]="'large'" [rating]="0" (onRatingChange)="onFriendlinessRatingChange($event)"></star-rating-comp>
+		</div>
+	</div>
+</div>
+
+<div class="row top-buffer">
+		<div class="col" align="center">
+			<input type="submit" class="btn btn-primary rightButton" value="Submit">
+		</div>
+	</div>
+</div>
 </form>
 </div>
 </section>
+
+
