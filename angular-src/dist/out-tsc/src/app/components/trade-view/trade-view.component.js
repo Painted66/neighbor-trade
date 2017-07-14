@@ -49,6 +49,9 @@ var TradeViewComponent = (function () {
             }
         });
     };
+    TradeViewComponent.prototype.isMyTrade = function () {
+        return null;
+    };
     return TradeViewComponent;
 }());
 TradeViewComponent = __decorate([

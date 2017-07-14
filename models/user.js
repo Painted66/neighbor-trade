@@ -18,8 +18,16 @@ const UserSchema = mongoose.Schema({
   password: {
     type: String,
     required: true
+  },
+  trade_latitude: {
+      type: Number,
+      required: true
+  },
+  trade_longitude: {
+      type: Number,
+      required: true
   }
-});
+  });
 
 const User = module.exports = mongoose.model('User', UserSchema);
 

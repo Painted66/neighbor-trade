@@ -52,4 +52,8 @@ export class TradeViewComponent implements OnInit {
 		  }
 	  });
   }
+
+  isMyTrade(){
+	return null;
+  }
 }

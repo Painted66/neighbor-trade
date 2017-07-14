@@ -1,6 +1,5 @@
 <section>
 <div *ngFor = "let trade of trades">
-	<p>id={{trade._id}}</p>
 	
 	<h4>Offer</h4>
 	<p>trade_offer_title={{trade.trade_offer_title}}</p>
@@ -26,7 +25,7 @@
 	
 	
 <button (click)="goToRateTrade(trade._id)">rate trade</button>
-	<button (click)="deleteTrade(trade._id)">delete trade</button>
+	<button ng-show="{{trade.trade_demand_recipient}}==" (click)="deleteTrade(trade._id)">delete trade</button>
 </div>
 
 </section>

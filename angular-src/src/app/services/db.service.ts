@@ -16,7 +16,6 @@ export class DbService {
   }
 
 	createNewTrade(trade){
-		console.log(trade);
 		let headers = new Headers();
 		headers.append('Content-Type','application/json');
 		return this.http.post('http://localhost:3000/trades/new-trade', trade,{headers: headers})

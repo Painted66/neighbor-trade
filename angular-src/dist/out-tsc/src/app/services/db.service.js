@@ -21,7 +21,6 @@ var DbService = (function () {
             .map(function (res) { return res.json(); });
     };
     DbService.prototype.createNewTrade = function (trade) {
-        console.log(trade);
         var headers = new Headers();
         headers.append('Content-Type', 'application/json');
         return this.http.post('http://localhost:3000/trades/new-trade', trade, { headers: headers })
