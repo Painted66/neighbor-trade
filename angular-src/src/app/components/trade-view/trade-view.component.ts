@@ -72,7 +72,7 @@ export class TradeViewComponent implements OnInit {
   isMyTrade(){
 	const user = localStorage.getItem('user');
 	var userJson = JSON.parse(user);
-	return userJson.id== this.trades[0].trade_demand_recipient;
+	return userJson.id== this.trades[0].trade_demand_recipient && this.trades[0].trade_status === 'searching';
   }
   isOpenForMe(){
   	var isOpen = false;
@@ -80,6 +80,17 @@ export class TradeViewComponent implements OnInit {
   		isOpen = this.trades[0].trade_status === 'searching';
   	}
   	return isOpen && !this.isMyTrade();
+  }
+  isMyTradeAppliedFor(){
+	const user = localStorage.getItem('user');
+  	var isOpen = false;
+  	var isMyTrade = false;
+	var userJson = JSON.parse(user);
+  	if(this.trades[0]){
+  		isOpen = this.trades[0].trade_status === 'applied';
+  		isMyTrade = userJson.id== this.trades[0].trade_demand_recipient
+  	}
+  	return isOpen && isMyTrade;
   }
   
 }
