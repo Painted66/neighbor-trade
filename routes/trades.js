@@ -89,7 +89,12 @@ router.put ('/update-trade/:id', (req, res, next) => {
 
 router.get('/dashboard/:id', (req, res, next) => {
 	var userID = req.params.id;
-	Trade.find({trade_demand_recipient: userID}).populate('trade_offer_recipient').populate('trade_demand_recipient').exec(function(err, trade){
+	var query = {$or:[
+    	{trade_demand_recipient: userID},
+    	{trade_offer_recipient: userID}
+  	]};
+    			console.log(query);
+	Trade.find(query).populate('trade_offer_recipient').populate('trade_demand_recipient').exec(function(err, trade){
     	if(err){
     		res.json({success: false, trades: err});
     	}else{

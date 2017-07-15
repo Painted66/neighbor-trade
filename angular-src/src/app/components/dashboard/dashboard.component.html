@@ -8,7 +8,7 @@
 			</a>
 			
 			<div class="panel-content collapsed" id="openTrades" [collapse]="isCollapsed">
-				<div class="well col-xs-12 text-center" *ngFor = "let trade of trades | filter:'searching'">
+				<div class="well col-xs-12 text-center" *ngFor = "let trade of trades | filter:{trade_status:'searching'}">
 						<div class="wellcol-xs-12 text-center">
 							<table class="table-striped text-center col-xs-12">
 								<thead>
@@ -31,10 +31,120 @@
 								</tr>
 								<tr>
 									<td class="text-left" (click)="goToUserProfile(trade.trade_offer_recipient._id)">
-										<a>{{trade.trade_offer_recipient}}</a>
+										<a>{{getUserName(trade.trade_offer_recipient)}}</a>
 									</td>
 									<td class="text-right" (click)="goToUserProfile(trade.trade_demand_recipient._id)">
-										<a>{{trade.trade_demand_recipient.username}}</a>
+										<a>{{getUserName(trade.trade_demand_recipient)}}</a>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										{{trade.trade_deadline | date}}
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										{{trade.trade_status}}
+									</td>
+								</tr>
+							</table>
+                        	<i class="fa fa-lg fa-search text-primary sr-icons" (click)="goToTradeDetails(trade._id)"></i>
+							
+						</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="panel panel-info  col-lg-6 col-sm-12">
+			<a>
+			<div class="panel-heading collapsed" (click)="isCollapsed = !isCollapsed" data-target="#pendingTrades">
+				Pending Trades
+			</div>
+			</a>
+			
+			<div class="panel-content collapsed" id="pendingTrades" [collapse]="isCollapsed">
+				<div class="well col-xs-12 text-center" *ngFor = "let trade of trades | filter:{trade_status:'applied'}">
+						<div class="wellcol-xs-12 text-center">
+							<table class="table-striped text-center col-xs-12">
+								<thead>
+									<tr>
+										<th class="text-left">
+											Offer
+										</th>
+										<th class="text-right">
+											Demand
+										</th>
+									</tr>
+								</thead>
+								<tr>
+									<td class="text-left largeContent">
+										{{trade.trade_offer_title}}
+									</td>
+									<td class="text-right largeContent">
+										{{trade.trade_demand_title}}
+									</td>
+								</tr>
+								<tr>
+									<td class="text-left" (click)="goToUserProfile(trade.trade_offer_recipient._id)">
+										<a>{{getUserName(trade.trade_offer_recipient)}}</a>
+									</td>
+									<td class="text-right" (click)="goToUserProfile(trade.trade_demand_recipient._id)">
+										<a>{{getUserName(trade.trade_demand_recipient)}}</a>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										{{trade.trade_deadline | date}}
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										{{trade.trade_status}}
+									</td>
+								</tr>
+							</table>
+                        	<i class="fa fa-lg fa-search text-primary sr-icons" (click)="goToTradeDetails(trade._id)"></i>
+							
+						</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="panel panel-info  col-lg-6 col-sm-12">
+			<a>
+			<div class="panel-heading collapsed" (click)="isCollapsed = !isCollapsed" data-target="#matchedTrades">
+				Matched Trades
+			</div>
+			</a>
+			
+			<div class="panel-content collapsed" id="matchedTrades" [collapse]="isCollapsed">
+				<div class="well col-xs-12 text-center" *ngFor = "let trade of trades | filter:{trade_status:'accepted'}">
+						<div class="wellcol-xs-12 text-center">
+							<table class="table-striped text-center col-xs-12">
+								<thead>
+									<tr>
+										<th class="text-left">
+											Offer
+										</th>
+										<th class="text-right">
+											Demand
+										</th>
+									</tr>
+								</thead>
+								<tr>
+									<td class="text-left largeContent">
+										{{trade.trade_offer_title}}
+									</td>
+									<td class="text-right largeContent">
+										{{trade.trade_demand_title}}
+									</td>
+								</tr>
+								<tr>
+									<td class="text-left" (click)="goToUserProfile(trade.trade_offer_recipient._id)">
+										<a>{{getUserName(trade.trade_offer_recipient)}}</a>
+									</td>
+									<td class="text-right" (click)="goToUserProfile(trade.trade_demand_recipient._id)">
+										<a>{{getUserName(trade.trade_demand_recipient)}}</a>
 									</td>
 								</tr>
 								<tr>

@@ -20,28 +20,33 @@ export class DashboardComponent implements OnInit {
       private router: Router
   ) { }
 
-  ngOnInit() {
-    
-    this.userID = JSON.parse(localStorage.getItem('user')).id;
-    
-    // Create new Trade
-    this.dbService.getTradesByUserID(this.userID).subscribe(data => {
-      if(data.success){
-      	this.trades = data.trades;
-      	
-      } else {
-      	
-      }
-    });
-  }
-  goToTradeDetails(id: string){
-  	this.router.navigate(["/trade-view", id]);
-  }
-    goToUserProfile(id: string){
-    console.log(id);
-  	this.router.navigate(["/profile", id]);
-  }
-  
+	ngOnInit() {
+
+		this.userID = JSON.parse(localStorage.getItem('user')).id;
+
+		// Create new Trade
+		this.dbService.getTradesByUserID(this.userID).subscribe(data => {
+		  if(data.success){
+			this.trades = data.trades;
+
+		  } else {
+
+		  }
+		});
+	}
+		goToTradeDetails(id: string){
+		this.router.navigate(["/trade-view", id]);
+	}
+	goToUserProfile(id: string){
+		console.log(id);
+		this.router.navigate(["/profile", id]);
+	}
+	getUserName(user){
+		if(user){
+			if(user.username) return user.username;
+		}
+		return '';
+	}
 
 
 }
