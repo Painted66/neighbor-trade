@@ -82,20 +82,32 @@ export class TradeViewComponent implements OnInit {
 		console.log(currentTrade);
 		  this.dbService.updateTrade(id, currentTrade).subscribe(data => {
 			  if(data.success){
-				  location.reload();
+				window.location.href = "/dashboard";
 			  } else {
 				console.log(data);
 			  }
 		  });
 	}
-acceptTradePartner(id: string){
+	acceptTradePartner(id: string){
 		const user = JSON.parse(localStorage.getItem('user'));
-		console.log(user.id);
 		var currentTrade = this.trades[0];
 		currentTrade.trade_status = 'accepted';
 		  this.dbService.updateTrade(id, currentTrade).subscribe(data => {
 			  if(data.success){
-				  location.reload();
+				window.location.href = "/dashboard";
+			  } else {
+				console.log(data);
+			  }
+		  });
+	}
+	denyTradePartner(id: string){
+		const user = JSON.parse(localStorage.getItem('user'));
+		var currentTrade = this.trades[0];
+		currentTrade.trade_status = 'searching';
+		currentTrade.trade_offer_recipient = null;
+		  this.dbService.updateTrade(id, currentTrade).subscribe(data => {
+			  if(data.success){
+				window.location.href = "/dashboard";
 			  } else {
 				console.log(data);
 			  }

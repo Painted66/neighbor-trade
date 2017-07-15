@@ -28,6 +28,7 @@
 <button *ngIf="isMyTrade()" (click)="deleteTrade(trade._id)">delete trade</button>
 <button *ngIf="isOpenForMe()" (click)="applyForTrade(trade._id)">apply for trade</button>
 <button *ngIf="isMyTradeAppliedFor()" (click)="acceptTradePartner(trade._id)">accept trade</button>
+<button *ngIf="isMyTradeAppliedFor()" (click)="denyTradePartner(trade._id)">deny application</button>
 </div>
 
 </section>
