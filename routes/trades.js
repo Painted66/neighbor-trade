@@ -6,7 +6,6 @@ const Rating = require('../models/rating');
 
 //Add new Trad offer
 router.post('/new-trade', (req, res, next) => {
-	console.log("in post method");
     let newTrade = new Trade({
         trade_offer_title: req.body.trade_offer_title,
         trade_offer_description: req.body.trade_offer_description,
@@ -23,10 +22,10 @@ router.post('/new-trade', (req, res, next) => {
         trade_latitude: req.body.trade_latitude,
         trade_longitude: req.body.trade_longitude,
         trade_max_distance: req.body.trade_max_distance,
+        trade_demand_rated: req.body.trade_demand_rated,
+        trade_offer_rated: req.body.trade_offer_rated,
         trade_status: "searching"
     });
-	console.log("created new Trade");
-	console.log(newTrade);
     Trade.addTrade(newTrade, (err, trade) => {
         if(err){
             res.json({success: false, msg:'Failed to add a new Trade Offer'});

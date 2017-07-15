@@ -14,6 +14,7 @@ import {IStarRatingOnRatingChangeEven} from "angular-star-rating/src/star-rating
 export class RateTradeComponent implements OnInit {
 	
 	private id;
+	private userIDToBeRated;
   	trades: JSON;
   	tmpRoute;
   	
@@ -36,18 +37,19 @@ export class RateTradeComponent implements OnInit {
 
   ngOnInit() {
   	this.tmpRoute.params.subscribe(params => {
-  		this.id = params["id"];
+  		this.id = params["trade_id"];
+		this.userIDToBeRated = params["user_id"];
   		this.dbService.getTradeByTradeID(this.id).subscribe(data => {
 			  if(data.success){
 				this.trades = data.trades;
 			  } else {
-				
 			  }
 			});
   		});
   }
   
-  onRegisterSubmit(trade_id:String, user_id:String){
+  onRegisterSubmit(trade_id:String){
+  		var createRating = false;
 		const rating = {
 			punctuality: this.punctuality,
 			work_quality: this.quality,
@@ -56,15 +58,37 @@ export class RateTradeComponent implements OnInit {
 			reliability: this.reliability,
 			friendliness: this.friendliness,
 			trade: trade_id,
-			user: user_id
+			user: this.userIDToBeRated
 		}
-		
-		this.dbService.createNewRating(rating).subscribe(data => {
-		  if(data.success){
-			location.reload();
-		} else {
+		var currentTrade = this.trades[0];
+		console.log("currentTrade.trade_demand_recipient: "+currentTrade.trade_demand_recipient);
+		console.log("this.userIDToBeRated: "+this.userIDToBeRated);
+		if(currentTrade.trade_demand_recipient === this.userIDToBeRated){
+			currentTrade.trade_offer_rated = true;
+			createRating=true;
 		}
-		});
+		console.log("SEECOONED");
+		console.log("currentTrade.trade_offer_recipient: "+currentTrade.trade_offer_recipient);
+		console.log("this.userIDToBeRated: "+this.userIDToBeRated);
+		if(currentTrade.trade_offer_recipient === this.userIDToBeRated){
+			currentTrade.trade_demand_rated = true;
+			createRating=true;
+		}
+		console.log("current Trade: "+currentTrade);
+		if(createRating){
+			this.dbService.createNewRating(rating).subscribe(data => {
+				if(data.success){
+					this.dbService.updateTrade(trade_id, currentTrade).subscribe(data => {
+						  if(data.success){
+							window.location.href = "/dashboard";
+						  } else {
+							console.log(data);
+						  }
+					  });
+				} else {
+				}
+			});
+		}
 		
     }
   

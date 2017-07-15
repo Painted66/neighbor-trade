@@ -47,7 +47,7 @@ const appRoutes: Routes =  [
   {path:'trades', component: TradesComponent, canActivate:[AuthGuard]},
   {path:'search-result', component: SearchResultsComponent, canActivate:[AuthGuard]},
   {path:'new-trade', component: NewTradeComponent, canActivate:[AuthGuard]},
-  {path:'rate-trade/:id', component: RateTradeComponent, canActivate:[AuthGuard]},
+  {path:'rate-trade/:trade_id/:user_id', component: RateTradeComponent, canActivate:[AuthGuard]},
   {path:'trade-view/:id', component: TradeViewComponent, canActivate:[AuthGuard]},
   {path:'profile/:id', component: ProfileComponent, canActivate:[AuthGuard]}
 ]

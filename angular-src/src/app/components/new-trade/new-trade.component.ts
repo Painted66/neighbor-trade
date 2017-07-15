@@ -113,7 +113,9 @@ export class NewTradeComponent implements OnInit {
       trade_latitude: this.latitude,
       trade_longitude: this.longitude,
       trade_max_distance: this.trade_max_distance,
-      trade_demand_recipient: user_id
+      trade_demand_recipient: user_id,
+      trade_offer_rated: false,
+      trade_demand_rated: false
     }
     //Required Fields
     if(!this.validateService.validateNewTrade(trade)){
@@ -123,8 +125,8 @@ export class NewTradeComponent implements OnInit {
     // Create new Trade
     this.dbService.createNewTrade(trade).subscribe(data => {
       if(data.success){
-        location.reload();
         this.flashMessage.show('Your trade offer is now listed', {cssClass: 'alert-success', timeout: 3000});
+        window.location.href = "/dashboard";
       } else {
         this.flashMessage.show('Something went wrong', {cssClass: 'alert-danger', timeout: 3000});
       }

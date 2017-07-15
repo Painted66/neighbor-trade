@@ -39,7 +39,27 @@ export class TradeViewComponent implements OnInit {
   }
   
   goToRateTrade(id: string){
-  	this.router.navigate(["/rate-trade", id]);
+	const user = localStorage.getItem('user');
+	var userJson = JSON.parse(user);
+	var userIDToBeRated = -1;
+	if(this.trades[0]){
+	
+		if(this.trades[0].trade_offer_recipient === userJson.id && 
+			this.trades[0].trade_demand_recipient !== userJson.id &&
+			this.trades[0].trade_demand_recipient !== undefined){
+			userIDToBeRated = this.trades[0].trade_demand_recipient;
+		}else{
+		
+			if(this.trades[0].trade_demand_recipient === userJson.id && 
+			this.trades[0].trade_offer_recipient !== userJson.id &&
+			this.trades[0].trade_offer_recipient !== undefined){
+				userIDToBeRated = this.trades[0].trade_offer_recipient;
+			}
+		}
+		if(userIDToBeRated!=-1){
+  			this.router.navigate(["/rate-trade", id, userIDToBeRated]);
+		}
+	}
   }
 
   deleteTrade(id: string){
@@ -68,7 +88,19 @@ export class TradeViewComponent implements OnInit {
 			  }
 		  });
 	}
-
+acceptTradePartner(id: string){
+		const user = JSON.parse(localStorage.getItem('user'));
+		console.log(user.id);
+		var currentTrade = this.trades[0];
+		currentTrade.trade_status = 'accepted';
+		  this.dbService.updateTrade(id, currentTrade).subscribe(data => {
+			  if(data.success){
+				  location.reload();
+			  } else {
+				console.log(data);
+			  }
+		  });
+	}
   isMyTrade(){
 	const user = localStorage.getItem('user');
 	var userJson = JSON.parse(user);
@@ -88,9 +120,31 @@ export class TradeViewComponent implements OnInit {
 	var userJson = JSON.parse(user);
   	if(this.trades[0]){
   		isOpen = this.trades[0].trade_status === 'applied';
-  		isMyTrade = userJson.id== this.trades[0].trade_demand_recipient
+  		isMyTrade = userJson.id== this.trades[0].trade_demand_recipient;
   	}
   	return isOpen && isMyTrade;
+  }
+  isRatable(){
+	const user = localStorage.getItem('user');
+	var isOfferRecipient = false;
+	var isDemandRecipient = false;
+  	var isAccepted = false;
+  	var isMyTrade = false;
+  	var isRated = false;
+	var userJson = JSON.parse(user);
+  	if(this.trades[0]){
+		var isOfferRecipient = userJson.id === this.trades[0].trade_demand_recipient;
+		var isDemandRecipient = userJson.id === this.trades[0].trade_offer_recipient;
+  		isAccepted = this.trades[0].trade_status === 'accepted';
+  		isMyTrade = isOfferRecipient || isDemandRecipient;
+  		if(isOfferRecipient){
+  			isRated = this.trades[0].trade_demand_rated;
+  		}
+  		if(isDemandRecipient){
+  			isRated = this.trades[0].trade_offer_rated;
+  		}
+  	}
+  	return isAccepted && isMyTrade && !isRated;
   }
   
 }

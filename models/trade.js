@@ -21,6 +21,10 @@ const TradeSchema = mongoose.Schema({
     trade_offer_recipient: {
         type: schema.Types.ObjectId, ref: 'User'
     },
+    trade_offer_rated: {
+        type: Boolean,
+        required: true
+    },
     trade_demand_title: {
         type: String,
         required: true
@@ -38,6 +42,10 @@ const TradeSchema = mongoose.Schema({
     },
     trade_demand_recipient: {
         type: schema.Types.ObjectId, ref: 'User'
+    },
+    trade_demand_rated: {
+        type: Boolean,
+        required: true
     },
     trade_deadline: {
         type: Date,
@@ -72,6 +80,7 @@ module.exports.getTradeById = function(id, callback){
 }
 
 module.exports.addTrade = function(newTrade, callback){
+	console.log(newTrade);
     newTrade.save(callback);
 }
 
