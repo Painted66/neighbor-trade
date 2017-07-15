@@ -56,7 +56,7 @@
   
 </form>
 
-<div class="well col-xs-12 text-center" *ngFor = "let trade of trades | filter:'searching'">
+<div class="well col-xs-12 text-center" *ngFor = "let trade of trades">
 						<div class="wellcol-xs-12 text-center">
 							<table class="table-striped text-center col-xs-12">
 								<thead>
@@ -78,11 +78,11 @@
 									</td>
 								</tr>
 								<tr>
-									<td class="text-left">
-										{{trade.trade_offer_recipient}}
+									<td class="text-left" (click)="goToUserProfile(trade.trade_offer_recipient)">
+										<a>{{getUserName(trade.trade_offer_recipient)}}</a>
 									</td>
-									<td class="text-right">
-										{{trade.trade_demand_recipient.username}}
+									<td class="text-right" (click)="goToUserProfile(trade.trade_demand_recipient)">
+										<a>{{getUserName(trade.trade_demand_recipient)}}</a>
 									</td>
 								</tr>
 								<tr>

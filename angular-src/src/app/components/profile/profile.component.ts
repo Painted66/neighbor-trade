@@ -37,11 +37,14 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
   	this.tmpRoute.params.subscribe(params => {
   		this.userID = params["id"];
-  		console.log(this.userID);
-  		this.dbService.getUserRatingsByUserID(this.userID).subscribe(data => {
+  		this.dbService.getUserByID(this.userID).subscribe(userData =>{
+  			if(userData.success){
+  				this.user = userData.users[0];
+  				this.dbService.getUserRatingsByUserID(this.userID).subscribe(data => {
+  			
 			  if(data.success){
 				this.ratings = data.ratings;
-				console.log(data.ratings);
+				console.log('Ratings: '+data.ratings);
 				var i: any;
 				for(i in data.ratings){
 					console.log(data.ratings[this.ratingCount]);
@@ -71,7 +74,10 @@ export class ProfileComponent implements OnInit {
 			  } else {
 			  }
 			});
-  		
+  			}else{
+  			
+  			}
+  		});
   	});
     
     

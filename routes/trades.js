@@ -75,12 +75,15 @@ console.log(req.body.user);
 router.put ('/update-trade/:id', (req, res, next) => {
     var id = req.params.id;
     //TODO https://www.youtube.com/watch?v=5_pvYIbyZlU
-
-    Trade.updateTradeByID(updatedTrade , (err) => {
+	var updateTrade = req.body;
+	console.log('updateTrade: '+JSON.stringify(updateTrade));
+    Trade.findOneAndUpdate({_id:id}, updateTrade, function(err, user) {
         if(err){
-            res.json({success: false, msg:'Failed to update the trade'});
-        } else {
-            res.json({success: true, msg:'The Trade is updated'});
+        	console.log(err);
+        	res.json({success: false});
+        }else{
+        	console.log('success:   '+user);
+        	res.json({success: true});
         }
     });
 });
@@ -165,7 +168,7 @@ router.get('/profile/:id', (req, res, next) => {
 router.post('/trades', (req, res, next) => {
 	var offer_title = req.body;
 	console.log(offer_title);
-	Trade.find(offer_title, function(err, trade){
+	Trade.find(offer_title).populate('trade_offer_recipient').populate('trade_demand_recipient').exec(function(err, trade){
     	if(err){
     		res.json({success: false, trades: err});
     	}else{

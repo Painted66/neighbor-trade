@@ -46,11 +46,23 @@ export class TradesComponent implements OnInit {
 								this.trade_demand_tags, 
 								this.trade_offer_tags).subscribe(data => {
 		  if(data.success){
-		  	
+		  		console.log(data);
       			this.trades = data.trades;
 		  } else {  
 		  	this.flashMessage.show('Something went wrong', {cssClass: 'alert-danger', timeout: 3000});
 		}
 		});
 	}
+	    goToUserProfile(user){
+	    if(user){
+	    	var id = user._id;
+	    console.log('USER ID: '+id);
+			this.router.navigate(["/profile", id]);
+	    }
+  }
+	
+  getUserName(user){
+  	if(user) return user.username;
+  	return "";
+  }
 }

@@ -14,7 +14,13 @@ export class DbService {
     return this.http.delete('http://localhost:3000/trades/delete-trade/'+id,{headers: headers})
         .map(res => res.json());
   }
-
+  updateTrade(id, updatedTrade) {
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    console.log(updatedTrade);
+    return this.http.put('http://localhost:3000/trades/update-trade/'+id, updatedTrade, {headers: headers})
+        .map(res => res.json());
+  }
 	createNewTrade(trade){
 		let headers = new Headers();
 		headers.append('Content-Type','application/json');
@@ -43,6 +49,14 @@ export class DbService {
 		let headers = new Headers();
 		headers.append('Content-Type','application/json');
 		return this.http.get('http://localhost:3000/trades/profile/'+userID, {headers: headers})
+			.map(res => res.json());
+	}
+	
+	getUserByID(userID){
+		console.log(userID);
+		let headers = new Headers();
+		headers.append('Content-Type','application/json');
+		return this.http.get('http://localhost:3000/users/profile/'+userID, {headers: headers})
 			.map(res => res.json());
 	}
 	

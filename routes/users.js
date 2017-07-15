@@ -12,10 +12,11 @@ router.post('/register', (req, res, next) => {
       email: req.body.email,
       username: req.body.username,
       password: req.body.password,
-      longitude: 0,
-      latitude: 0
+      trade_latitude: 30,
+      trade_longitude: 30
   });
-
+	console.log(newUser);
+	console.log('NEW USER');
   User.addUser(newUser, (err, user) => {
     if(err){
       res.json({success: false, msg:'Failed to register user'});
@@ -65,6 +66,20 @@ router.get('/my-profile', passport.authenticate('jwt', {session:false}), (req, r
   res.json({user: req.user});
 });
 
+router.get('/profile/:userID', (req, res, next) => {
+	var userID = req.params.userID;
+	User.find({_id: userID}, function(err, user){
+    	if(err){
+    		res.json({success: false, users: err});
+    	}else{
+    		if(!user){
+    			res.json({success: false, users: 'no user found'});
+    		}else{
+    			res.json({success: true, users: user});
+    		}
+    	}
+    });
+});
 
 
 module.exports = router;

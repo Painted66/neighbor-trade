@@ -52,10 +52,34 @@ export class TradeViewComponent implements OnInit {
 		  }
 	  });
   }
+  
+	applyForTrade(id: string){
+		const user = JSON.parse(localStorage.getItem('user'));
+		console.log(user.id);
+		var currentTrade = this.trades[0];
+		currentTrade.trade_status = 'applied';
+		currentTrade.trade_offer_recipient = user.id;
+		console.log(currentTrade);
+		  this.dbService.updateTrade(id, currentTrade).subscribe(data => {
+			  if(data.success){
+				  location.reload();
+			  } else {
+				console.log(data);
+			  }
+		  });
+	}
 
   isMyTrade(){
 	const user = localStorage.getItem('user');
 	var userJson = JSON.parse(user);
 	return userJson.id== this.trades[0].trade_demand_recipient;
   }
+  isOpenForMe(){
+  	var isOpen = false;
+  	if(this.trades[0]){
+  		isOpen = this.trades[0].trade_status === 'searching';
+  	}
+  	return isOpen && !this.isMyTrade();
+  }
+  
 }
