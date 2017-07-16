@@ -45,6 +45,42 @@ var DashboardComponent = (function () {
         }
         return '';
     };
+    DashboardComponent.prototype.isMyTradeAppliedFor = function (trade) {
+        var user = localStorage.getItem('user');
+        var isOpen = false;
+        var isMyTrade = false;
+        var userJson = JSON.parse(user);
+        if (trade) {
+            isOpen = trade.trade_status === 'applied';
+            isMyTrade = userJson.id == trade.trade_demand_recipient._id;
+        }
+        return isOpen && isMyTrade;
+    };
+    DashboardComponent.prototype.acceptTradePartner = function (id, currentTrade) {
+        var user = JSON.parse(localStorage.getItem('user'));
+        currentTrade.trade_status = 'accepted';
+        this.dbService.updateTrade(id, currentTrade).subscribe(function (data) {
+            if (data.success) {
+                window.location.href = "/dashboard";
+            }
+            else {
+                console.log(data);
+            }
+        });
+    };
+    DashboardComponent.prototype.denyTradePartner = function (id, currentTrade) {
+        var user = JSON.parse(localStorage.getItem('user'));
+        currentTrade.trade_status = 'searching';
+        currentTrade.trade_offer_recipient = null;
+        this.dbService.updateTrade(id, currentTrade).subscribe(function (data) {
+            if (data.success) {
+                window.location.href = "/dashboard";
+            }
+            else {
+                console.log(data);
+            }
+        });
+    };
     return DashboardComponent;
 }());
 DashboardComponent = __decorate([

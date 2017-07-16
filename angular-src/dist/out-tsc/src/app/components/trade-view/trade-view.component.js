@@ -133,7 +133,7 @@ var TradeViewComponent = (function () {
         var userJson = JSON.parse(user);
         if (this.trades[0]) {
             isOpen = this.trades[0].trade_status === 'applied';
-            isMyTrade = userJson.id == this.trades[0].trade_demand_recipient;
+            isMyTrade = userJson.id == this.trades[0].trade_demand_recipient._id;
         }
         return isOpen && isMyTrade;
     };
