@@ -1,4 +1,4 @@
-<section class="col-xs-12">
+<section>
 
 <div *ngIf="user">
     <div class="container text-center">
@@ -9,18 +9,21 @@
         <div class="col-sm-3"><h3>Email: {{user.email}}</h3></div>
       </div>
       <hr>
-      <div class="container img-rounded" id="rate-trade">
-
-        <div class="row">
-          <div class="col-sm-4 col-sm-offset-4" >
-            <h3>Overall Rating</h3>
-            <star-rating-comp [starType]="'svg'" [rating]=overallRatingString [showHalfStars]="true" [readOnly]="true" [size]="'large'"></star-rating-comp>
-          </div>
+    </div>
+  </div>
+  <div class="container img-rounded text-center" id="rate-trade">
+    <div class="row">
+    <div class="col-sm-4 col-sm-offset-4" >
+       <h3>Overall Rating</h3>
+    </div>
+      <div class="row">
+        <div class="col-sm-4 col-sm-offset-4" >
+           <star-rating-comp [starType]="'svg'" [rating]=overallRatingString [showHalfStars]="true" [readOnly]="true" [size]="'large'"></star-rating-comp>
         </div>
-        <div class="row">
-          <div class="col-sm-12">
-            <h3>Number of Ratings: {{ratingCount}}</h3>
-          </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <h3>Number of Ratings: {{ratingCount}}</h3>
         </div>
       </div>
     </div>

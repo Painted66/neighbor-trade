@@ -8,3 +8,12 @@
 	background-color: rgba(0,0,0,0.5);
 	padding: 10px 20px 40px 20px;
 }
+
+
+@media (min-width: 1200px) {
+	.container{
+		max-width: 870px;
+	}
+	.top-buffer { margin-top:30px; }
+	.top-buffer-container { margin-top:100px; }
+}
