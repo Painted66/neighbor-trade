@@ -8,3 +8,22 @@
 	background-color: rgba(0,0,0,0.8);
 	padding: 10px 20px 40px 20px;
 }
+
+.labelColor{
+    color: #02C5FF;
+}
+
+.spacer { 
+margin:15px; 
+padding:0;  
+}
+
+.bottomSpacer { 
+margin:0; 
+padding:0; 
+height:50px; 
+}
+
+.top-spacer { 
+margin-top:40px; 
+}
