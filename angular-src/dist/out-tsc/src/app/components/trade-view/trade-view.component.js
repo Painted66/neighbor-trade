@@ -33,6 +33,9 @@ var TradeViewComponent = (function () {
                 }
             });
         });
+        this.dbService.getAddress("48.3583779", "10.7914009").subscribe(function (data) {
+            _this.address = data;
+        });
     };
     TradeViewComponent.prototype.goToRateTrade = function (id) {
         var user = localStorage.getItem('user');

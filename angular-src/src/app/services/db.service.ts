@@ -53,7 +53,6 @@ export class DbService {
 	}
 	
 	getUserByID(userID){
-		console.log(userID);
 		let headers = new Headers();
 		headers.append('Content-Type','application/json');
 		return this.http.get('http://localhost:3000/users/profile/'+userID, {headers: headers})
@@ -89,6 +88,12 @@ export class DbService {
 		
 		return this.http.post('http://localhost:3000/trades/trades/', query, {headers: headers})
 			.map(res => res.json());
+	}
+
+	getAddress(lat,lng) {
+		var call = ('http://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+lng+'&sensor=true');
+		return this.http.get(call)
+            .map(res => res.json());
 	}
 
 }

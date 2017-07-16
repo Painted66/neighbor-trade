@@ -14,6 +14,7 @@ export class TradeViewComponent implements OnInit {
 	
 	private id;
   	trades: JSON;
+  	address: JSON
   	tmpRoute;
 	constructor(
       private validateService: ValidateService,
@@ -36,6 +37,10 @@ export class TradeViewComponent implements OnInit {
 			  }
 			});
   		});
+
+	  this.dbService.getAddress("48.3583779", "10.7914009").subscribe(data => {
+		  this.address = data;
+	  });
   }
   
   goToRateTrade(id: string){
@@ -168,4 +173,5 @@ export class TradeViewComponent implements OnInit {
 		}
 		return '';
 	}
-}
+
+	}

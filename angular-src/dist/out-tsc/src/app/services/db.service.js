@@ -55,7 +55,6 @@ var DbService = (function () {
             .map(function (res) { return res.json(); });
     };
     DbService.prototype.getUserByID = function (userID) {
-        console.log(userID);
         var headers = new Headers();
         headers.append('Content-Type', 'application/json');
         return this.http.get('http://localhost:3000/users/profile/' + userID, { headers: headers })
@@ -90,6 +89,11 @@ var DbService = (function () {
         if (trade_offer_tags !== undefined && trade_offer_tags !== "")
             query['trade_offer_tags'] = trade_offer_tags;
         return this.http.post('http://localhost:3000/trades/trades/', query, { headers: headers })
+            .map(function (res) { return res.json(); });
+    };
+    DbService.prototype.getAddress = function (lat, lng) {
+        var call = ('http://maps.googleapis.com/maps/api/geocode/json?latlng=' + lat + ',' + lng + '&sensor=true');
+        return this.http.get(call)
             .map(function (res) { return res.json(); });
     };
     return DbService;
