@@ -109,7 +109,7 @@ router.get('/dashboard/:id', (req, res, next) => {
 
 router.get('/trade-view/:tradeID', (req, res, next) => {
 	var tradeID = req.params.tradeID;
-	Trade.find({_id: tradeID}, function(err, trade){
+	Trade.find({_id: tradeID}).populate('trade_offer_recipient').populate('trade_demand_recipient').exec(function(err, trade){
     	if(err){
     		res.json({success: false, trades: err});
     	}else{
