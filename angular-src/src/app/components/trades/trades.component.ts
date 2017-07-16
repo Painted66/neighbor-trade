@@ -65,4 +65,7 @@ export class TradesComponent implements OnInit {
   	if(user) return user.username;
   	return "";
   }
+  
+
+  
 }
