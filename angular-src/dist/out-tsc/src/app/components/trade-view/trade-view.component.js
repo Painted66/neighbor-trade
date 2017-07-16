@@ -42,16 +42,16 @@ var TradeViewComponent = (function () {
         var userJson = JSON.parse(user);
         var userIDToBeRated = -1;
         if (this.trades[0]) {
-            if (this.trades[0].trade_offer_recipient === userJson.id &&
-                this.trades[0].trade_demand_recipient !== userJson.id &&
-                this.trades[0].trade_demand_recipient !== undefined) {
-                userIDToBeRated = this.trades[0].trade_demand_recipient;
+            if (this.trades[0].trade_offer_recipient._id === userJson.id &&
+                this.trades[0].trade_demand_recipient._id !== userJson.id &&
+                this.trades[0].trade_demand_recipient._id !== undefined) {
+                userIDToBeRated = this.trades[0].trade_demand_recipient._id;
             }
             else {
-                if (this.trades[0].trade_demand_recipient === userJson.id &&
-                    this.trades[0].trade_offer_recipient !== userJson.id &&
-                    this.trades[0].trade_offer_recipient !== undefined) {
-                    userIDToBeRated = this.trades[0].trade_offer_recipient;
+                if (this.trades[0].trade_demand_recipient._id === userJson.id &&
+                    this.trades[0].trade_offer_recipient._id !== userJson.id &&
+                    this.trades[0].trade_offer_recipient._id !== undefined) {
+                    userIDToBeRated = this.trades[0].trade_offer_recipient._id;
                 }
             }
             if (userIDToBeRated != -1) {
@@ -117,7 +117,7 @@ var TradeViewComponent = (function () {
     TradeViewComponent.prototype.isMyTrade = function () {
         var user = localStorage.getItem('user');
         var userJson = JSON.parse(user);
-        return userJson.id == this.trades[0].trade_demand_recipient && this.trades[0].trade_status === 'searching';
+        return userJson.id == this.trades[0].trade_demand_recipient._id && this.trades[0].trade_status === 'searching';
     };
     TradeViewComponent.prototype.isOpenForMe = function () {
         var isOpen = false;
@@ -146,8 +146,8 @@ var TradeViewComponent = (function () {
         var isRated = false;
         var userJson = JSON.parse(user);
         if (this.trades[0]) {
-            var isOfferRecipient = userJson.id === this.trades[0].trade_demand_recipient;
-            var isDemandRecipient = userJson.id === this.trades[0].trade_offer_recipient;
+            var isOfferRecipient = userJson.id === this.trades[0].trade_demand_recipient._id;
+            var isDemandRecipient = userJson.id === this.trades[0].trade_offer_recipient._id;
             isAccepted = this.trades[0].trade_status === 'accepted';
             isMyTrade = isOfferRecipient || isDemandRecipient;
             if (isOfferRecipient) {

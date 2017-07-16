@@ -68,20 +68,15 @@ var RateTradeComponent = (function () {
             user: this.userIDToBeRated
         };
         var currentTrade = this.trades[0];
-        console.log("currentTrade.trade_demand_recipient: " + currentTrade.trade_demand_recipient);
-        console.log("this.userIDToBeRated: " + this.userIDToBeRated);
-        if (currentTrade.trade_demand_recipient === this.userIDToBeRated) {
+        if (currentTrade.trade_demand_recipient._id === this.userIDToBeRated) {
             currentTrade.trade_offer_rated = true;
             createRating = true;
         }
-        console.log("SEECOONED");
-        console.log("currentTrade.trade_offer_recipient: " + currentTrade.trade_offer_recipient);
-        console.log("this.userIDToBeRated: " + this.userIDToBeRated);
-        if (currentTrade.trade_offer_recipient === this.userIDToBeRated) {
+        if (currentTrade.trade_offer_recipient._id === this.userIDToBeRated) {
             currentTrade.trade_demand_rated = true;
             createRating = true;
         }
-        console.log("current Trade: " + currentTrade);
+        console.log("create?????:   " + createRating);
         if (createRating) {
             this.dbService.createNewRating(rating).subscribe(function (data) {
                 if (data.success) {
