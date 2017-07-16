@@ -1,2 +1,10 @@
 .spacer { margin:0; padding:0; height:20px; }
 .spacer-sm { margin:0; padding:0; height:10px; }
+
+.denyBtn {
+    background-color: #ff4e4e;
+}
+
+.acceptBtn {
+    background-color: #53ff4e;
+}

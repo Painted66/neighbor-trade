@@ -55,8 +55,8 @@
 					<i class="fa fa-lg fa-search text-primary sr-icons" (click)="goToTradeDetails(trade._id)"></i>
 					<div class="spacer"></div>
 					
-					<button *ngIf="isMyTradeAppliedFor(trade)" (click)="acceptTradePartner(trade._id, trade)">accept trade</button>
-					<button *ngIf="isMyTradeAppliedFor(trade)" (click)="denyTradePartner(trade._id, trade)">deny application</button>
+					<button class="btn acceptBtn" *ngIf="isMyTradeAppliedFor(trade)" (click)="acceptTradePartner(trade._id, trade)">accept trade</button>
+					<button class="btn denyBtn" *ngIf="isMyTradeAppliedFor(trade)" (click)="denyTradePartner(trade._id, trade)">deny application</button>
 					
 					<div class="spacer"></div>
 				</div>
