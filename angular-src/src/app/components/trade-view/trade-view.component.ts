@@ -51,16 +51,16 @@ export class TradeViewComponent implements OnInit {
 	var userIDToBeRated = -1;
 	if(this.trades[0]){
 	
-		if(this.trades[0].trade_offer_recipient === userJson.id && 
-			this.trades[0].trade_demand_recipient !== userJson.id &&
-			this.trades[0].trade_demand_recipient !== undefined){
-			userIDToBeRated = this.trades[0].trade_demand_recipient;
+		if(this.trades[0].trade_offer_recipient._id === userJson.id && 
+			this.trades[0].trade_demand_recipient._id !== userJson.id &&
+			this.trades[0].trade_demand_recipient._id !== undefined){
+			userIDToBeRated = this.trades[0].trade_demand_recipient._id;
 		}else{
 		
-			if(this.trades[0].trade_demand_recipient === userJson.id && 
-			this.trades[0].trade_offer_recipient !== userJson.id &&
-			this.trades[0].trade_offer_recipient !== undefined){
-				userIDToBeRated = this.trades[0].trade_offer_recipient;
+			if(this.trades[0].trade_demand_recipient._id === userJson.id && 
+			this.trades[0].trade_offer_recipient._id !== userJson.id &&
+			this.trades[0].trade_offer_recipient._id !== undefined){
+				userIDToBeRated = this.trades[0].trade_offer_recipient._id;
 			}
 		}
 		if(userIDToBeRated!=-1){
@@ -123,7 +123,7 @@ export class TradeViewComponent implements OnInit {
   isMyTrade(){
 	const user = localStorage.getItem('user');
 	var userJson = JSON.parse(user);
-	return userJson.id== this.trades[0].trade_demand_recipient && this.trades[0].trade_status === 'searching';
+	return userJson.id== this.trades[0].trade_demand_recipient._id && this.trades[0].trade_status === 'searching';
   }
   isOpenForMe(){
   	var isOpen = false;
@@ -154,8 +154,8 @@ export class TradeViewComponent implements OnInit {
   	var isRated = false;
 	var userJson = JSON.parse(user);
   	if(this.trades[0]){
-		var isOfferRecipient = userJson.id === this.trades[0].trade_demand_recipient;
-		var isDemandRecipient = userJson.id === this.trades[0].trade_offer_recipient;
+		var isOfferRecipient = userJson.id === this.trades[0].trade_demand_recipient._id;
+		var isDemandRecipient = userJson.id === this.trades[0].trade_offer_recipient._id;
   		isAccepted = this.trades[0].trade_status === 'accepted';
   		isMyTrade = isOfferRecipient || isDemandRecipient;
   		if(isOfferRecipient){
