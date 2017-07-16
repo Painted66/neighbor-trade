@@ -28,13 +28,13 @@ var TradeViewComponent = (function () {
             _this.dbService.getTradeByTradeID(_this.id).subscribe(function (data) {
                 if (data.success) {
                     _this.trades = data.trades;
+                    _this.dbService.getAddress(_this.trades[0].trade_latitude, _this.trades[0].trade_longitude).subscribe(function (adressData) {
+                        _this.address = adressData;
+                    });
                 }
                 else {
                 }
             });
-        });
-        this.dbService.getAddress("48.3583779", "10.7914009").subscribe(function (data) {
-            _this.address = data;
         });
     };
     TradeViewComponent.prototype.goToRateTrade = function (id) {
@@ -167,6 +167,13 @@ var TradeViewComponent = (function () {
         if (user) {
             if (user.username)
                 return user.username;
+        }
+        return '';
+    };
+    TradeViewComponent.prototype.getAdress = function (adress) {
+        if (adress) {
+            if (adress.results[1])
+                return adress.results[1].formatted_address;
         }
         return '';
     };
