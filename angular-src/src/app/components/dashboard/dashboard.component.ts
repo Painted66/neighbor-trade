@@ -82,5 +82,15 @@ export class DashboardComponent implements OnInit {
 			  }
 		  });
 	}
+	getAdress(trade){
+		/*if(trade){
+			this.dbService.getAddress(trade.trade_latitude, trade.trade_longitude).subscribe(adressData => {
+				
+						  return adressData.results[1].formatted_address;
+			});
+			return 'Nothing';
+		}*/
+		return 'No Trade';
+	}
 
 }
