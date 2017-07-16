@@ -11,53 +11,18 @@
 			<div><h3>Information</h3></div>
 		</div>
 				<div class="row spacer">
-				  <div class="col-sm-3 col-sm-offset-3"><h3><font color="#02C5FF">Username:</font> {{user.username}}</h3></div>
-				  <div class="col-sm-3"><h3><font color="#02C5FF">Email:</font> {{user.email}}</h3></div>
+				  <div class="col-sm-4 col-sm-offset-2"><h3><font color="#02C5FF">Username:</font> {{user.username}}</h3></div>
+				  <div class="col-sm-4"><h3><font color="#02C5FF">Email:</font> {{user.email}}</h3></div>
 				 </div>
 			 </div>
 		 </div>
-<<<<<<< HEAD
-=======
-		 <hr>
-<<<<<<< HEAD
-	</div>
-	<div class="container img-rounded text-center" id="ratingContainer">
+		 
 
-		<div class="row">
-			<div class="col-sm-4">
-				<h3>Punctuality</h3>
-				<star-rating-comp [starType]="'svg'" [rating]=punctualityString [showHalfStars]="true" [readOnly]="true" [size]="'large'"></star-rating-comp>
-			</div>
-			<div class="col-sm-4">
-				<h3>Quality</h3>
-				<star-rating-comp [starType]="'svg'" [rating]=work_qualityString [showHalfStars]="true" [readOnly]="true" [size]="'large'"></star-rating-comp>
-			</div>
-			<div class="col-sm-4">
-				<h3>Responsiveness</h3>
-				<star-rating-comp [starType]="'svg'" [rating]=responsivenessString [showHalfStars]="true" [readOnly]="true" [size]="'large'"></star-rating-comp>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-4">
-				<h3>Duration</h3>
-				<star-rating-comp [starType]="'svg'" [rating]=durationString [showHalfStars]="true" [readOnly]="true" [size]="'large'"></star-rating-comp>
-			</div>
-			<div class="col-sm-4">
-				<h3>Reliability</h3>
-				<star-rating-comp [starType]="'svg'" [rating]=reliabilityString [showHalfStars]="true" [readOnly]="true" [size]="'large'"></star-rating-comp>
-			</div>
-			<div class="col-sm-4">
-				<h3>Friendliness</h3>
-				<star-rating-comp [starType]="'svg'" [rating]=friendlinessString [showHalfStars]="true" [readOnly]="true" [size]="'large'"></star-rating-comp>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-12">
-				<h3>Number of Ratings: {{ratingCount}}</h3>
-			</div>
-=======
-		 <div class="container img-rounded" id="ratingContainer">
->>>>>>> origin/master
+		 <hr>
+
+	</div>
+
+	<div class="container text-center" id="ratingContainer">
 
 		 <div class="container">
 		 <div class="panel panel-default">
@@ -99,10 +64,11 @@
 					<h3 class="bottomSpacer"><font color="#02C5FF">Number of Ratings:</font> {{ratingCount}}</h3>
 				</div>
 			</div>
->>>>>>> main
+
+		
 		</div>
 	</div>
 </div>
+</div>
 
 </section>
-
