@@ -1,30 +1,39 @@
 <section id="rate-trade-background">
 <div  *ngFor = "let trade of trades" >
-<form (submit)="onRegisterSubmit(trade._id)">
-<div>
-<h3>INFOS</h3>
-	<h4>Offer</h4>
-	<p>trade_offer_title={{trade.trade_offer_title}}</p>
-	<p>trade_offer_description={{trade.trade_offer_description}}</p>
-	<p>trade_offer_categorie={{trade.trade_offer_categorie}}</p>
-	<p>trade_offer_recipient={{trade.trade_offer_recipient}}</p>
-	<p>trade_offer_tags={{trade.trade_offer_tags}}</p>
-	
-	<h4>Demand</h4>
-	<p>trade_demand_title={{trade.trade_demand_title}}</p>
-	<p>trade_demand_description={{trade.trade_demand_description}}</p>
-	<p>trade_demand_categorie={{trade.trade_demand_categorie}}</p>
-	<p>trade_demand_recipient={{trade.trade_demand_recipient}}</p>
-	<p>trade_demand_tags={{trade.trade_demand_tags}}</p>
-	
-	<h4>General</h4>
-	<p>trade_deadline={{trade.trade_deadline}}</p>
-	<p>trade_min_rating={{trade.trade_min_rating}}</p>
-	<p>trade_latitude={{trade.trade_latitude}}</p>
-	<p>trade_longitude={{trade.trade_longitude}}</p>
-	<p>trade_max_distance={{trade.trade_max_distance}}</p>
-	<p>trade_status={{trade.trade_status}}</p>
-</div>
+
+	<div *ngFor = "let trade of trades" >
+		<div class="row" >
+			<div class="col-md-2"></div>
+			<div class="col-md-4" align="center">
+				<div class="panel panel-default" >
+					<div class="col-xs-12 panel-heading">
+						<h3>Offer</h3>
+					</div>
+					<p><b>{{trade.trade_offer_title}}</b></p>
+					<p>{{trade.trade_offer_description}}</p>
+					<p>Category: {{trade.trade_offer_categorie}}</p>
+					<p (click)="goToUserProfile(getUserID(trade.trade_demand_recipient))">User: <a>{{getUserName(trade.trade_demand_recipient)}}</a></p>
+					<p>Tags: {{trade.trade_offer_tags}}</p>
+				</div>
+			</div>
+			<div class="col-md-4" align="center">
+				<div class="panel panel-default" >
+					<div class="col-xs-12 panel-heading">
+						<h3>Demand</h3>
+					</div>
+					<p><b>{{trade.trade_demand_title}}</b></p>
+					<p>{{trade.trade_demand_description}}</p>
+					<p>Category: {{trade.trade_demand_categorie}}</p>
+					<p (click)="goToUserProfile(getUserID(trade.trade_offer_recipient))">User: <a>{{getUserName(trade.trade_offer_recipient)}}</a></p>
+					<p>Tags: {{trade.trade_demand_tags}}</p>
+				</div>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+
+
+
+	<form (submit)="onRegisterSubmit(trade._id)">
 <div class="container top-buffer img-rounded" id="rate-trade">
 	<div class="row">
 	<div class="col-sm-4">
@@ -78,6 +87,7 @@
 	</div>
 </div>
 </form>
+</div>
 </div>
 </section>
 

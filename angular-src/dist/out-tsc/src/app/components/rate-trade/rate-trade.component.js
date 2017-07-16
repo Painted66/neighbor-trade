@@ -94,6 +94,13 @@ var RateTradeComponent = (function () {
             });
         }
     };
+    RateTradeComponent.prototype.getUserName = function (user) {
+        if (user) {
+            if (user.username)
+                return user.username;
+        }
+        return '';
+    };
     return RateTradeComponent;
 }());
 RateTradeComponent = __decorate([

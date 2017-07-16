@@ -17,12 +17,3 @@
 	.top-buffer-container { margin-top:100px; }
 }
 
-#rate-trade-background {
-	webkit-tap-highlight-color: #222;
-	background-image: url(../../../assets/rating.jpg);
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-attachment: fixed;
-	color: #FFFFFF;
-	padding-bottom: 100px;
-}
