@@ -7,7 +7,7 @@
 			<p><b>{{trade.trade_offer_title}}</b></p>
 			<p>{{trade.trade_offer_description}}</p>
 			<p>Category: {{trade.trade_offer_categorie}}</p>
-			<p (click)="goToUserProfile(trade.trade_demand_recipient._id)">User: <a>{{getUserName(trade.trade_demand_recipient)}}</a></p>
+			<p (click)="goToUserProfile(getUserID(trade.trade_demand_recipient))">User: <a>{{getUserName(trade.trade_demand_recipient)}}</a></p>
 			<p>Tags: {{trade.trade_offer_tags}}</p>
 		</div>
 		<div class="col-md-4">
@@ -15,7 +15,7 @@
 			<p><b>{{trade.trade_demand_title}}</b></p>
 			<p>{{trade.trade_demand_description}}</p>
 			<p>Category: {{trade.trade_demand_categorie}}</p>
-			<p (click)="goToUserProfile(trade.trade_offer_recipient._id)">User: <a>{{getUserName(trade.trade_offer_recipient)}}</a></p>
+			<p (click)="goToUserProfile(getUserID(trade.trade_offer_recipient))">User: <a>{{getUserName(trade.trade_offer_recipient)}}</a></p>
 			<p>Tags: {{trade.trade_demand_tags}}</p>
 		</div>
 		<div class="col-md-2"></div>

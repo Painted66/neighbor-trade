@@ -50,18 +50,19 @@ export class TradeViewComponent implements OnInit {
 	var userJson = JSON.parse(user);
 	var userIDToBeRated = -1;
 	if(this.trades[0]){
-	
-		if(this.trades[0].trade_offer_recipient._id === userJson.id && 
+		if(this.trades[0].trade_offer_recipient&&
+			this.trades[0].trade_offer_recipient._id === userJson.id && 
 			this.trades[0].trade_demand_recipient._id !== userJson.id &&
 			this.trades[0].trade_demand_recipient._id !== undefined){
 			userIDToBeRated = this.trades[0].trade_demand_recipient._id;
 		}else{
-		
-			if(this.trades[0].trade_demand_recipient._id === userJson.id && 
+			if(this.trades[0].trade_demand_recipient){
+			if(this.trades[0].trade_offer_recipient&&
+			this.trades[0].trade_demand_recipient._id === userJson.id && 
 			this.trades[0].trade_offer_recipient._id !== userJson.id &&
 			this.trades[0].trade_offer_recipient._id !== undefined){
 				userIDToBeRated = this.trades[0].trade_offer_recipient._id;
-			}
+			}}
 		}
 		if(userIDToBeRated!=-1){
   			this.router.navigate(["/rate-trade", id, userIDToBeRated]);
@@ -155,7 +156,10 @@ export class TradeViewComponent implements OnInit {
 	var userJson = JSON.parse(user);
   	if(this.trades[0]){
 		var isOfferRecipient = userJson.id === this.trades[0].trade_demand_recipient._id;
-		var isDemandRecipient = userJson.id === this.trades[0].trade_offer_recipient._id;
+		var isDemandRecipient = false;
+		if(this.trades[0].trade_offer_recipient){
+			isDemandRecipient = userJson.id === this.trades[0].trade_offer_recipient._id;
+		}
   		isAccepted = this.trades[0].trade_status === 'accepted';
   		isMyTrade = isOfferRecipient || isDemandRecipient;
   		if(isOfferRecipient){
@@ -174,6 +178,12 @@ export class TradeViewComponent implements OnInit {
 	getUserName(user){
 		if(user){
 			if(user.username) return user.username;
+		}
+		return '';
+	}
+	getUserID(user){
+	if(user){
+			if(user._id) return user._id;
 		}
 		return '';
 	}
