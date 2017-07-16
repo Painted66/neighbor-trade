@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../services/auth.service';
 import {Router} from '@angular/router';
 import {DbService} from '../../services/db.service';
+import {IStarRatingOnRatingChangeEven} from "angular-star-rating/src/star-rating-struct";
+
+import {FlashMessagesService} from 'angular2-flash-messages';
+import {FilterPipe} from '../../filter.pipe';
+import { StarRatingModule } from 'angular-star-rating';
 
 @Component({
   selector: 'app-my-profile',
@@ -21,6 +26,14 @@ export class MyProfileComponent implements OnInit {
   reliability=0;
   friendliness=0;
   ratingCount=0;
+
+  punctualityString:String;
+  work_qualityString:String;
+  responsivenessString:String;
+  durationString:String;
+  reliabilityString:String;
+  friendlinessString:String;
+  ratingCountString:String;
 
   constructor(private authService:AuthService,
       		private dbService: DbService, 
@@ -52,6 +65,13 @@ export class MyProfileComponent implements OnInit {
 				this.duration = this.duration/this.ratingCount;
 				this.reliability  = this.reliability/this.ratingCount;
 				this.friendliness  = this.friendliness/this.ratingCount;
+
+				this.punctualityString = this.punctuality.toString();
+				this.work_qualityString = this.work_quality.toString();
+				this.responsivenessString = this.responsiveness.toString();
+				this.durationString = this.duration.toString();
+				this.reliabilityString = this.reliability.toString();
+				this.friendlinessString = this.friendliness.toString();
 			  } else {
 			  }
 			});
