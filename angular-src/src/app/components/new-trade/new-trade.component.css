@@ -1,11 +1,10 @@
 #new-trade {
 	font-family: Merriweather, 'Helvetica Neue', Arial, sans-serif;
 	webkit-tap-highlight-color: #222;
-	background-image: url(../../../assets/NewTradeBackground.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-attachment: fixed;
-	color: #FFFFFF;
+
 	padding-bottom: 100px;
 }
 .sebm-google-map-container {
@@ -13,8 +12,8 @@
 }
 
 .service-box {
-	background-color: rgba(0,0,0,0.8);
-	padding: 10px 20px 40px 20px;
+
+	padding: 20px 20px 40px 20px;
 }
 
 .rightButton {
@@ -35,3 +34,6 @@
 }
 
 
+.step{
+	padding: 10px 20px 40px 20px;
+}

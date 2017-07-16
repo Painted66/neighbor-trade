@@ -81,6 +81,16 @@ var DashboardComponent = (function () {
             }
         });
     };
+    DashboardComponent.prototype.getAdress = function (trade) {
+        /*if(trade){
+            this.dbService.getAddress(trade.trade_latitude, trade.trade_longitude).subscribe(adressData => {
+                
+                          return adressData.results[1].formatted_address;
+            });
+            return 'Nothing';
+        }*/
+        return 'No Trade';
+    };
     return DashboardComponent;
 }());
 DashboardComponent = __decorate([

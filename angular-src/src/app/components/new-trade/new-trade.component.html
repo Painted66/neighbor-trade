@@ -1,14 +1,22 @@
-<div class="row" id="new-trade">
-<div class="service-box" >
+<section class="col-xs-12">
   <flash-messages></flash-messages>
-<h2 class="page-header">Create new Trade</h2>
+  <div class="text-center">
+    <h1>Create a new Trade</h1>
+    <hr>
+    <div class="spacer"></div>
+  </div>
+  <div class="container col-lg-8 col-lg-offset-2 text-center">
 <form (submit)="onRegisterSubmit()">
 
   <div id="Step1" class="newTradeStep">
-  <h3 class="page-header">Offer</h3>
-  <div class="form-group">
+    <div class="panel panel-default" >
+      <div class="col-xs-12 panel-heading">
+        <div><h3>Offer</h3></div>
+      </div>
+    <div class="step">
+    <div class="form-group">
     <label>Title</label>
-    <input type="text" [(ngModel)]="trade_offer_title" name="trade_offer_title" class="form-control" required placeholder="Enter your offer titel" maxlength="50">
+    <input type="text" [(ngModel)]="trade_offer_title" name="trade_offer_title" class="form-control" required placeholder="Enter your offer titel" maxlength="50" >
   </div>
   <div class="form-group">
     <label>Description</label>
@@ -25,21 +33,26 @@
       <option value="Mechanical">Mechanical</option>
       <option value="Social">Social</option>
       <option value="Technology">Technology</option>
-      <option value="Other">Other</option>
+      <option value="Other">Technology</option>
 	</select>
   </div>
   <div class="form-group">
     <label>Tags</label>
     <input type="text" [(ngModel)]="trade_offer_tags" name="trade_offer_tags" class="form-control" required placeholder="Example: garden, cut the lawn, ..." title="Separate tags with a comma" maxlength="70">
-
   </div>
-
+  </div>
+    </div>
     <button type="button" class="btn rightButton" (click)="nextStep()">Next</button>
   </div>
 
 
+
   <div id="Step2" class="newTradeStep">
-  <h3 class="page-header">Demand</h3>
+    <div class="panel panel-default" >
+      <div class="col-xs-12 panel-heading">
+  <h3>Demand</h3>
+      </div>
+    <div class="step">
   <div class="form-group">
     <label>Title</label>
     <input type="text" [(ngModel)]="trade_demand_title" name="trade_demand_title" class="form-control" required placeholder="Enter your demand titel" maxlength="50">
@@ -59,19 +72,25 @@
       <option value="Mechanical">Mechanical</option>
       <option value="Social">Social</option>
       <option value="Technology">Technology</option>
-      <option value="Other">Other</option>
+      <option value="Other">Technology</option>
 	</select>
   </div>
   <div class="form-group">
     <label>Tags</label>
     <input type="text" [(ngModel)]="trade_demand_tags" name="trade_demand_tags" class="form-control" required placeholder="Example: garden, cut the lawn, ..." title="Separate tags with a comma" maxlength="70">
   </div>
+    </div>
+    </div>
     <button type="button" class="btn leftButton" (click)="preStep()">Previous</button>
     <button type="button" class="btn rightButton" (click)="nextStep(); map.triggerResize()">Next</button>
   </div>
 
   <div id="Step3" class="newTradeStep">
-  <h3 class="page-header">Restrictions</h3>
+    <div class="panel panel-default" >
+      <div class="col-xs-12 panel-heading">
+  <h3>Restrictions</h3>
+      </div>
+    <div class="step">
   <div class="form-group">
     <label>Deadline</label>
     <input type="date" [(ngModel)]="trade_deadline" name="trade_deadline" class="form-control" required>
@@ -99,10 +118,12 @@
       <option value=40075>unlimited</option>
     </select>
   </div>
+    </div>
+    </div>
   <flash-messages></flash-messages>
     <button type="button" class="btn leftButton" (click)="preStep()">Previous</button>
   <input type="submit" class="btn btn-primary rightButton" value="Submit">
   </div>
 </form>
-</div>
-</div>
+  </div>
+</section>
