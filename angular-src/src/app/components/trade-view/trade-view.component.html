@@ -33,11 +33,11 @@
 	<div class="row">
 		<div class="col-md-2"></div>
 		<div class="col-md-8" align="center">
-			<button type="button" *ngIf="isRatable()" (click)="goToRateTrade(trade._id)">rate trade</button>
-			<button type="button" *ngIf="isMyTrade()" (click)="deleteTrade(trade._id)">delete trade</button>
-			<button type="button" *ngIf="isOpenForMe()" (click)="applyForTrade(trade._id)">apply for trade</button>
-			<button type="button" *ngIf="isMyTradeAppliedFor()" (click)="acceptTradePartner(trade._id)">accept trade</button>
-			<button type="button" *ngIf="isMyTradeAppliedFor()" (click)="denyTradePartner(trade._id)">deny application</button>
+			<button type="button" class="btn" *ngIf="isRatable()" (click)="goToRateTrade(trade._id)">rate trade</button>
+			<button type="button" class="btn" *ngIf="isMyTrade()" (click)="deleteTrade(trade._id)">delete trade</button>
+			<button type="button" class="btn acceptBtn" *ngIf="isOpenForMe()" (click)="applyForTrade(trade._id)">apply for trade</button>
+			<button type="button" class="btn acceptBtn" *ngIf="isMyTradeAppliedFor()" (click)="acceptTradePartner(trade._id)">accept trade</button>
+			<button type="button" class="btn denyBtn" *ngIf="isMyTradeAppliedFor()" (click)="denyTradePartner(trade._id)">deny application</button>
 		</div>
 		<div class="col-md-2"></div>
 	</div>
