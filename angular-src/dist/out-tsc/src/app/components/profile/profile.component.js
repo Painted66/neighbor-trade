@@ -62,6 +62,7 @@ var ProfileComponent = (function () {
                                 + _this.duration
                                 + _this.reliability
                                 + _this.friendliness) / 6;
+                            _this.overallRatingString = _this.overallRating.toString();
                         }
                         else {
                         }

@@ -22,6 +22,7 @@ export class ProfileComponent implements OnInit {
   friendliness=0;
   ratingCount=0;
   overallRating = 0;
+  overallRatingString;
 
   	tmpRoute;
   	
@@ -71,6 +72,7 @@ export class ProfileComponent implements OnInit {
 									+ this.duration 
 									+ this.reliability 
 									+ this.friendliness)/6;
+				  this.overallRatingString = this.overallRating.toString();
 			  } else {
 			  }
 			});

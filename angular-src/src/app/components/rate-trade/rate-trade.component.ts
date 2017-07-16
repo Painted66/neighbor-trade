@@ -111,5 +111,12 @@ export class RateTradeComponent implements OnInit {
     this.friendliness = $event.rating;
   };
 
+	getUserName(user){
+		if(user){
+			if(user.username) return user.username;
+		}
+		return '';
+	}
+
 
 }

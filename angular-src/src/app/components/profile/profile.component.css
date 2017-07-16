@@ -3,3 +3,14 @@
 		margin-top: 300px; 
 	}
 }
+
+#rate-trade {
+	font-family: Merriweather, 'Helvetica Neue', Arial, sans-serif;
+	webkit-tap-highlight-color: #222;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+	color: #FFFFFF;
+	background-color: rgba(0,0,0,0.5);
+	padding: 10px 20px 40px 20px;
+}

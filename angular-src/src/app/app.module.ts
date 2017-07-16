@@ -29,7 +29,6 @@ import { ImpressumComponent } from './components/impressum/impressum.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 import { FilterPipe } from './filter.pipe';
 import { TradeViewComponent } from './components/trade-view/trade-view.component';
-import { RatingComponent } from './components/rating/rating.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
 
 
@@ -71,7 +70,6 @@ const appRoutes: Routes =  [
     CollapseDirective,
     FilterPipe,
     TradeViewComponent,
-    RatingComponent,
     MyProfileComponent,
   ],
   imports: [

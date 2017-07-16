@@ -50,6 +50,12 @@ var MyProfileComponent = (function () {
                     _this.duration = _this.duration / _this.ratingCount;
                     _this.reliability = _this.reliability / _this.ratingCount;
                     _this.friendliness = _this.friendliness / _this.ratingCount;
+                    _this.punctualityString = _this.punctuality.toString();
+                    _this.work_qualityString = _this.work_quality.toString();
+                    _this.responsivenessString = _this.responsiveness.toString();
+                    _this.durationString = _this.duration.toString();
+                    _this.reliabilityString = _this.reliability.toString();
+                    _this.friendlinessString = _this.friendliness.toString();
                 }
                 else {
                 }
