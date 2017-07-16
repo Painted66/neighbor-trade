@@ -73,8 +73,7 @@ console.log(req.body.user);
 
 router.put ('/update-trade/:id', (req, res, next) => {
     var id = req.params.id;
-    //TODO https://www.youtube.com/watch?v=5_pvYIbyZlU
-	var updateTrade = req.body;
+  	var updateTrade = req.body;
 	console.log('updateTrade: '+JSON.stringify(updateTrade));
     Trade.findOneAndUpdate({_id:id}, updateTrade, function(err, user) {
         if(err){

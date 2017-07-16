@@ -85,7 +85,7 @@ export class DbService {
 		if(trade_demand_categorie!==undefined && trade_demand_categorie!=="")query['trade_demand_categorie'] = trade_demand_categorie;
 		if(trade_demand_tags!==undefined && trade_demand_tags!=="")query['trade_demand_tags'] = trade_demand_tags;
 		if(trade_offer_tags!==undefined && trade_offer_tags!=="")query['trade_offer_tags'] = trade_offer_tags;
-		
+		query['trade_status'] ='searching';
 		return this.http.post('http://localhost:3000/trades/trades/', query, {headers: headers})
 			.map(res => res.json());
 	}
