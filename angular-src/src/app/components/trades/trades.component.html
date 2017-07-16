@@ -91,14 +91,14 @@
 				</div>
 				<div class="spacer-sm"></div>
 				<div class="row">
-					<div class="col-xs-5">
-							<a>{{getUserName(trade.trade_offer_recipient)}}</a>
+					<div class="col-xs-5" (click)="goToUserProfile(trade.trade_demand_recipient._id)">
+							<a>{{getUserName(trade.trade_demand_recipient)}}</a>
 					</div>
 					<div class="col-xs-2">
 						<i class="fa fa-user-o fa-xl" aria-hidden="true"></i>
 					</div>
-					<div class="col-xs-5">
-							<a>{{getUserName(trade.trade_demand_recipient)}}</a>
+					<div class="col-xs-5" (click)="goToUserProfile(trade.trade_demand_recipient._id)">
+							<a>{{getUserName(trade.trade_offer_recipient)}}</a>
 					</div>
 				</div>
 				<div class="spacer"></div>

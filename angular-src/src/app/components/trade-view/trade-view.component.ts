@@ -130,6 +130,7 @@ export class TradeViewComponent implements OnInit {
   	}
   	return isOpen && !this.isMyTrade();
   }
+  
   isMyTradeAppliedFor(){
 	const user = localStorage.getItem('user');
   	var isOpen = false;
@@ -137,10 +138,11 @@ export class TradeViewComponent implements OnInit {
 	var userJson = JSON.parse(user);
   	if(this.trades[0]){
   		isOpen = this.trades[0].trade_status === 'applied';
-  		isMyTrade = userJson.id== this.trades[0].trade_demand_recipient;
+  		isMyTrade = userJson.id== this.trades[0].trade_demand_recipient._id;
   	}
   	return isOpen && isMyTrade;
   }
+  
   isRatable(){
 	const user = localStorage.getItem('user');
 	var isOfferRecipient = false;
