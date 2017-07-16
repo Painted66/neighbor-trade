@@ -158,5 +158,14 @@ export class TradeViewComponent implements OnInit {
   	}
   	return isAccepted && isMyTrade && !isRated;
   }
-  
+	goToUserProfile(id: string){
+		console.log(id);
+		this.router.navigate(["/profile", id]);
+	}
+	getUserName(user){
+		if(user){
+			if(user.username) return user.username;
+		}
+		return '';
+	}
 }

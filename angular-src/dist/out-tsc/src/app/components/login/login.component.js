@@ -32,7 +32,7 @@ var LoginComponent = (function () {
                     cssClass: 'alert-success',
                     timeout: 5000
                 });
-                _this.router.navigate(['new-trade']);
+                _this.router.navigate(['dashboard']);
             }
             else {
                 _this.flashMessage.show(data.msg, {

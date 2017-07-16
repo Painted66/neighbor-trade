@@ -87,7 +87,9 @@ var NewTradeComponent = (function () {
             trade_latitude: this.latitude,
             trade_longitude: this.longitude,
             trade_max_distance: this.trade_max_distance,
-            trade_demand_recipient: user_id
+            trade_demand_recipient: user_id,
+            trade_offer_rated: false,
+            trade_demand_rated: false
         };
         //Required Fields
         if (!this.validateService.validateNewTrade(trade)) {
@@ -97,8 +99,8 @@ var NewTradeComponent = (function () {
         // Create new Trade
         this.dbService.createNewTrade(trade).subscribe(function (data) {
             if (data.success) {
-                location.reload();
                 _this.flashMessage.show('Your trade offer is now listed', { cssClass: 'alert-success', timeout: 3000 });
+                window.location.href = "/dashboard";
             }
             else {
                 _this.flashMessage.show('Something went wrong', { cssClass: 'alert-danger', timeout: 3000 });

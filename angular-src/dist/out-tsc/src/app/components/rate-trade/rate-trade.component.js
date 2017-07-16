@@ -43,7 +43,8 @@ var RateTradeComponent = (function () {
     RateTradeComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.tmpRoute.params.subscribe(function (params) {
-            _this.id = params["id"];
+            _this.id = params["trade_id"];
+            _this.userIDToBeRated = params["user_id"];
             _this.dbService.getTradeByTradeID(_this.id).subscribe(function (data) {
                 if (data.success) {
                     _this.trades = data.trades;
@@ -53,7 +54,9 @@ var RateTradeComponent = (function () {
             });
         });
     };
-    RateTradeComponent.prototype.onRegisterSubmit = function (trade_id, user_id) {
+    RateTradeComponent.prototype.onRegisterSubmit = function (trade_id) {
+        var _this = this;
+        var createRating = false;
         var rating = {
             punctuality: this.punctuality,
             work_quality: this.quality,
@@ -62,15 +65,39 @@ var RateTradeComponent = (function () {
             reliability: this.reliability,
             friendliness: this.friendliness,
             trade: trade_id,
-            user: user_id
+            user: this.userIDToBeRated
         };
-        this.dbService.createNewRating(rating).subscribe(function (data) {
-            if (data.success) {
-                location.reload();
-            }
-            else {
-            }
-        });
+        var currentTrade = this.trades[0];
+        console.log("currentTrade.trade_demand_recipient: " + currentTrade.trade_demand_recipient);
+        console.log("this.userIDToBeRated: " + this.userIDToBeRated);
+        if (currentTrade.trade_demand_recipient === this.userIDToBeRated) {
+            currentTrade.trade_offer_rated = true;
+            createRating = true;
+        }
+        console.log("SEECOONED");
+        console.log("currentTrade.trade_offer_recipient: " + currentTrade.trade_offer_recipient);
+        console.log("this.userIDToBeRated: " + this.userIDToBeRated);
+        if (currentTrade.trade_offer_recipient === this.userIDToBeRated) {
+            currentTrade.trade_demand_rated = true;
+            createRating = true;
+        }
+        console.log("current Trade: " + currentTrade);
+        if (createRating) {
+            this.dbService.createNewRating(rating).subscribe(function (data) {
+                if (data.success) {
+                    _this.dbService.updateTrade(trade_id, currentTrade).subscribe(function (data) {
+                        if (data.success) {
+                            window.location.href = "/dashboard";
+                        }
+                        else {
+                            console.log(data);
+                        }
+                    });
+                }
+                else {
+                }
+            });
+        }
     };
     return RateTradeComponent;
 }());

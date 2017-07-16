@@ -1,34 +1,48 @@
 <section>
-<div *ngFor = "let trade of trades">
-	
-	<h4>Offer</h4>
-	<p>trade_offer_title={{trade.trade_offer_title}}</p>
-	<p>trade_offer_description={{trade.trade_offer_description}}</p>
-	<p>trade_offer_categorie={{trade.trade_offer_categorie}}</p>
-	<p>trade_offer_recipient={{trade.trade_offer_recipient}}</p>
-	<p>trade_offer_tags={{trade.trade_offer_tags}}</p>
-	
-	<h4>Demand</h4>
-	<p>trade_demand_title={{trade.trade_demand_title}}</p>
-	<p>trade_demand_description={{trade.trade_demand_description}}</p>
-	<p>trade_demand_categorie={{trade.trade_demand_categorie}}</p>
-	<p>trade_demand_recipient={{trade.trade_demand_recipient}}</p>
-	<p>trade_demand_tags={{trade.trade_demand_tags}}</p>
-	
-	<h4>General</h4>
-	<p>trade_deadline={{trade.trade_deadline}}</p>
-	<p>trade_min_rating={{trade.trade_min_rating}}</p>
-	<p>trade_latitude={{trade.trade_latitude}}</p>
-	<p>trade_longitude={{trade.trade_longitude}}</p>
-	<p>trade_max_distance={{trade.trade_max_distance}}</p>
-	<p>trade_status={{trade.trade_status}}</p>
-	
-	
-<button *ngIf="isRatable()" (click)="goToRateTrade(trade._id)">rate trade</button>
-<button *ngIf="isMyTrade()" (click)="deleteTrade(trade._id)">delete trade</button>
-<button *ngIf="isOpenForMe()" (click)="applyForTrade(trade._id)">apply for trade</button>
-<button *ngIf="isMyTradeAppliedFor()" (click)="acceptTradePartner(trade._id)">accept trade</button>
-<button *ngIf="isMyTradeAppliedFor()" (click)="denyTradePartner(trade._id)">deny application</button>
+<div *ngFor = "let trade of trades" >
+	<div class="row" >
+		<div class="col-md-2"></div>
+		<div class="col-md-4" >
+			<h3>Offer</h3>
+			<p><b>{{trade.trade_offer_title}}</b></p>
+			<p>{{trade.trade_offer_description}}</p>
+			<p>Category: {{trade.trade_offer_categorie}}</p>
+			<p (click)="goToUserProfile(trade.trade_offer_recipient._id)">User: <a>{{getUserName(trade.trade_offer_recipient)}}</a></p>
+			<p>Tags: {{trade.trade_offer_tags}}</p>
+		</div>
+		<div class="col-md-4">
+			<h3>Demand</h3>
+			<p><b>{{trade.trade_demand_title}}</b></p>
+			<p>{{trade.trade_demand_description}}</p>
+			<p>Category: {{trade.trade_demand_categorie}}</p>
+			<p (click)="goToUserProfile(trade.trade_demand_recipient._id)">User: <a>{{getUserName(trade.trade_demand_recipient)}}</a></p>
+			<p>Tags: {{trade.trade_demand_tags}}</p>
+		</div>
+		<div class="col-md-2"></div>
+</div>
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+			<h3>General</h3>
+			<p>You should have a minimum rating of <b>{{trade.trade_min_rating}}</b> stars.</p>
+			<p>You have until <b>{{trade.trade_deadline | date: 'dd/MM/yyyy'}}</b> to apply for this trade</p>
+			<p>trade_latitude={{trade.trade_latitude}}</p>
+			<p>trade_longitude={{trade.trade_longitude}}</p>
+			<p>trade_max_distance={{trade.trade_max_distance}}</p>
+		</div>
+		<div class="col-md-2"></div>
+	</div>
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8" align="center">
+			<button *ngIf="isRatable()" (click)="goToRateTrade(trade._id)">rate trade</button>
+			<button *ngIf="isMyTrade()" (click)="deleteTrade(trade._id)">delete trade</button>
+			<button *ngIf="isOpenForMe()" (click)="applyForTrade(trade._id)">apply for trade</button>
+			<button *ngIf="isMyTradeAppliedFor()" (click)="acceptTradePartner(trade._id)">accept trade</button>
+			<button *ngIf="isMyTradeAppliedFor()" (click)="denyTradePartner(trade._id)">deny application</button>
+		</div>
+		<div class="col-md-2"></div>
+	</div>
 </div>
 
 </section>

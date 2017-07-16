@@ -35,7 +35,26 @@ var TradeViewComponent = (function () {
         });
     };
     TradeViewComponent.prototype.goToRateTrade = function (id) {
-        this.router.navigate(["/rate-trade", id]);
+        var user = localStorage.getItem('user');
+        var userJson = JSON.parse(user);
+        var userIDToBeRated = -1;
+        if (this.trades[0]) {
+            if (this.trades[0].trade_offer_recipient === userJson.id &&
+                this.trades[0].trade_demand_recipient !== userJson.id &&
+                this.trades[0].trade_demand_recipient !== undefined) {
+                userIDToBeRated = this.trades[0].trade_demand_recipient;
+            }
+            else {
+                if (this.trades[0].trade_demand_recipient === userJson.id &&
+                    this.trades[0].trade_offer_recipient !== userJson.id &&
+                    this.trades[0].trade_offer_recipient !== undefined) {
+                    userIDToBeRated = this.trades[0].trade_offer_recipient;
+                }
+            }
+            if (userIDToBeRated != -1) {
+                this.router.navigate(["/rate-trade", id, userIDToBeRated]);
+            }
+        }
     };
     TradeViewComponent.prototype.deleteTrade = function (id) {
         var _this = this;
@@ -49,10 +68,104 @@ var TradeViewComponent = (function () {
             }
         });
     };
+    TradeViewComponent.prototype.applyForTrade = function (id) {
+        var user = JSON.parse(localStorage.getItem('user'));
+        console.log(user.id);
+        var currentTrade = this.trades[0];
+        currentTrade.trade_status = 'applied';
+        currentTrade.trade_offer_recipient = user.id;
+        console.log(currentTrade);
+        this.dbService.updateTrade(id, currentTrade).subscribe(function (data) {
+            if (data.success) {
+                window.location.href = "/dashboard";
+            }
+            else {
+                console.log(data);
+            }
+        });
+    };
+    TradeViewComponent.prototype.acceptTradePartner = function (id) {
+        var user = JSON.parse(localStorage.getItem('user'));
+        var currentTrade = this.trades[0];
+        currentTrade.trade_status = 'accepted';
+        this.dbService.updateTrade(id, currentTrade).subscribe(function (data) {
+            if (data.success) {
+                window.location.href = "/dashboard";
+            }
+            else {
+                console.log(data);
+            }
+        });
+    };
+    TradeViewComponent.prototype.denyTradePartner = function (id) {
+        var user = JSON.parse(localStorage.getItem('user'));
+        var currentTrade = this.trades[0];
+        currentTrade.trade_status = 'searching';
+        currentTrade.trade_offer_recipient = null;
+        this.dbService.updateTrade(id, currentTrade).subscribe(function (data) {
+            if (data.success) {
+                window.location.href = "/dashboard";
+            }
+            else {
+                console.log(data);
+            }
+        });
+    };
     TradeViewComponent.prototype.isMyTrade = function () {
         var user = localStorage.getItem('user');
         var userJson = JSON.parse(user);
-        return userJson.id == this.trades[0].trade_demand_recipient;
+        return userJson.id == this.trades[0].trade_demand_recipient && this.trades[0].trade_status === 'searching';
+    };
+    TradeViewComponent.prototype.isOpenForMe = function () {
+        var isOpen = false;
+        if (this.trades[0]) {
+            isOpen = this.trades[0].trade_status === 'searching';
+        }
+        return isOpen && !this.isMyTrade();
+    };
+    TradeViewComponent.prototype.isMyTradeAppliedFor = function () {
+        var user = localStorage.getItem('user');
+        var isOpen = false;
+        var isMyTrade = false;
+        var userJson = JSON.parse(user);
+        if (this.trades[0]) {
+            isOpen = this.trades[0].trade_status === 'applied';
+            isMyTrade = userJson.id == this.trades[0].trade_demand_recipient;
+        }
+        return isOpen && isMyTrade;
+    };
+    TradeViewComponent.prototype.isRatable = function () {
+        var user = localStorage.getItem('user');
+        var isOfferRecipient = false;
+        var isDemandRecipient = false;
+        var isAccepted = false;
+        var isMyTrade = false;
+        var isRated = false;
+        var userJson = JSON.parse(user);
+        if (this.trades[0]) {
+            var isOfferRecipient = userJson.id === this.trades[0].trade_demand_recipient;
+            var isDemandRecipient = userJson.id === this.trades[0].trade_offer_recipient;
+            isAccepted = this.trades[0].trade_status === 'accepted';
+            isMyTrade = isOfferRecipient || isDemandRecipient;
+            if (isOfferRecipient) {
+                isRated = this.trades[0].trade_demand_rated;
+            }
+            if (isDemandRecipient) {
+                isRated = this.trades[0].trade_offer_rated;
+            }
+        }
+        return isAccepted && isMyTrade && !isRated;
+    };
+    TradeViewComponent.prototype.goToUserProfile = function (id) {
+        console.log(id);
+        this.router.navigate(["/profile", id]);
+    };
+    TradeViewComponent.prototype.getUserName = function (user) {
+        if (user) {
+            if (user.username)
+                return user.username;
+        }
+        return '';
     };
     return TradeViewComponent;
 }());

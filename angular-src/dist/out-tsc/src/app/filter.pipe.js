@@ -13,7 +13,7 @@ var FilterPipe = (function () {
             return values;
         if (values) {
             return values.filter(function (value) {
-                return value.trade_status == term;
+                return value.trade_status == term.trade_status;
             });
         }
         else {

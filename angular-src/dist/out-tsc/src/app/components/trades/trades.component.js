@@ -32,12 +32,25 @@ var TradesComponent = (function () {
         var _this = this;
         this.dbService.findTrades(this.trade_offer_title, this.trade_offer_categorie, this.trade_demand_title, this.trade_demand_categorie, this.trade_demand_tags, this.trade_offer_tags).subscribe(function (data) {
             if (data.success) {
+                console.log(data);
                 _this.trades = data.trades;
             }
             else {
                 _this.flashMessage.show('Something went wrong', { cssClass: 'alert-danger', timeout: 3000 });
             }
         });
+    };
+    TradesComponent.prototype.goToUserProfile = function (user) {
+        if (user) {
+            var id = user._id;
+            console.log('USER ID: ' + id);
+            this.router.navigate(["/profile", id]);
+        }
+    };
+    TradesComponent.prototype.getUserName = function (user) {
+        if (user)
+            return user.username;
+        return "";
     };
     return TradesComponent;
 }());

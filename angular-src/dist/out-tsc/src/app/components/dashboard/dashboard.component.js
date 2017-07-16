@@ -34,6 +34,17 @@ var DashboardComponent = (function () {
     DashboardComponent.prototype.goToTradeDetails = function (id) {
         this.router.navigate(["/trade-view", id]);
     };
+    DashboardComponent.prototype.goToUserProfile = function (id) {
+        console.log(id);
+        this.router.navigate(["/profile", id]);
+    };
+    DashboardComponent.prototype.getUserName = function (user) {
+        if (user) {
+            if (user.username)
+                return user.username;
+        }
+        return '';
+    };
     return DashboardComponent;
 }());
 DashboardComponent = __decorate([

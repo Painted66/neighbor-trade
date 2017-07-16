@@ -20,6 +20,13 @@ var DbService = (function () {
         return this.http.delete('http://localhost:3000/trades/delete-trade/' + id, { headers: headers })
             .map(function (res) { return res.json(); });
     };
+    DbService.prototype.updateTrade = function (id, updatedTrade) {
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        console.log(updatedTrade);
+        return this.http.put('http://localhost:3000/trades/update-trade/' + id, updatedTrade, { headers: headers })
+            .map(function (res) { return res.json(); });
+    };
     DbService.prototype.createNewTrade = function (trade) {
         var headers = new Headers();
         headers.append('Content-Type', 'application/json');
@@ -31,6 +38,27 @@ var DbService = (function () {
         var headers = new Headers();
         headers.append('Content-Type', 'application/json');
         return this.http.post('http://localhost:3000/trades/rate-trade', rating, { headers: headers })
+            .map(function (res) { return res.json(); });
+    };
+    DbService.prototype.getRatingsByUserID = function (userID) {
+        console.log(userID);
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.get('http://localhost:3000/trades/my-profile/' + userID, { headers: headers })
+            .map(function (res) { return res.json(); });
+    };
+    DbService.prototype.getUserRatingsByUserID = function (userID) {
+        console.log(userID);
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.get('http://localhost:3000/trades/profile/' + userID, { headers: headers })
+            .map(function (res) { return res.json(); });
+    };
+    DbService.prototype.getUserByID = function (userID) {
+        console.log(userID);
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.get('http://localhost:3000/users/profile/' + userID, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     DbService.prototype.getTradesByUserID = function (userID) {
