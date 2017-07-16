@@ -1,2 +1,6 @@
 .spacer { margin:0; padding:0; height:20px; }
 .spacer-sm { margin:0; padding:0; height:10px; }
+
+.form-group{
+    color: #02C5FF;
+}
