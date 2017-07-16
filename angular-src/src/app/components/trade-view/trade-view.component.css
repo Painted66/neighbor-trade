@@ -9,4 +9,6 @@
 .spacer { margin:0; padding:0; height:20px; }
 .spacer-sm { margin:0; padding:0; height:10px; }
 
-
+.panel-heading{
+    margin-bottom: 15px;
+}

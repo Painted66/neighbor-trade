@@ -8,31 +8,43 @@
 <div *ngFor = "let trade of trades" >
 	<div class="row" >
 		<div class="col-md-2"></div>
-		<div class="col-md-4" >
+		<div class="col-md-4" align="center">
+			<div class="panel panel-default" >
+				<div class="col-xs-12 panel-heading">
 			<h3>Offer</h3>
+				</div>
 			<p><b>{{trade.trade_offer_title}}</b></p>
 			<p>{{trade.trade_offer_description}}</p>
 			<p>Category: {{trade.trade_offer_categorie}}</p>
 			<p (click)="goToUserProfile(getUserID(trade.trade_demand_recipient))">User: <a>{{getUserName(trade.trade_demand_recipient)}}</a></p>
 			<p>Tags: {{trade.trade_offer_tags}}</p>
 		</div>
-		<div class="col-md-4">
+		</div>
+		<div class="col-md-4" align="center">
+			<div class="panel panel-default" >
+				<div class="col-xs-12 panel-heading">
 			<h3>Demand</h3>
+				</div>
 			<p><b>{{trade.trade_demand_title}}</b></p>
 			<p>{{trade.trade_demand_description}}</p>
 			<p>Category: {{trade.trade_demand_categorie}}</p>
 			<p (click)="goToUserProfile(getUserID(trade.trade_offer_recipient))">User: <a>{{getUserName(trade.trade_offer_recipient)}}</a></p>
 			<p>Tags: {{trade.trade_demand_tags}}</p>
 		</div>
+		</div>
 		<div class="col-md-2"></div>
 </div>
 	<div class="row">
 		<div class="col-md-2"></div>
-		<div class="col-md-8">
+		<div class="col-md-8" align="center">
+			<div class="panel panel-default" >
+				<div class="col-xs-12 panel-heading">
 			<h3>Criterias</h3>
-			<p>You should have a minimum rating of <b>{{trade.trade_min_rating}}</b> stars.</p>
+				</div>
+			<p>You should have a minimum overall rating of <b>{{trade.trade_min_rating}}</b> stars.</p>
 			<p>You have until <b>{{trade.trade_deadline | date: 'dd/MM/yyyy'}}</b> to apply for this trade</p>
 			<p>You should be in <b>{{trade.trade_max_distance}}</b> km range of <b>{{getAdress(address)}}</b> </p>
+		</div>
 		</div>
 		<div class="col-md-2"></div>
 	</div>
