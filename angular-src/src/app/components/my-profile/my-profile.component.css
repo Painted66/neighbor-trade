@@ -9,6 +9,7 @@
 	padding: 10px 20px 40px 20px;
 }
 
+<<<<<<< HEAD
 
 @media (min-width: 1200px) {
 	.container{
@@ -16,4 +17,23 @@
 	}
 	.top-buffer { margin-top:30px; }
 	.top-buffer-container { margin-top:100px; }
+=======
+.labelColor{
+    color: #02C5FF;
+}
+
+.spacer { 
+margin:15px; 
+padding:0;  
+}
+
+.bottomSpacer { 
+margin:0; 
+padding:0; 
+height:50px; 
+}
+
+.top-spacer { 
+margin-top:40px; 
+>>>>>>> main
 }
