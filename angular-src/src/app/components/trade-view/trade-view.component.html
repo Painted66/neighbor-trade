@@ -26,7 +26,7 @@
 			<h3>Criterias</h3>
 			<p>You should have a minimum rating of <b>{{trade.trade_min_rating}}</b> stars.</p>
 			<p>You have until <b>{{trade.trade_deadline | date: 'dd/MM/yyyy'}}</b> to apply for this trade</p>
-			<p>You should be in <b>{{trade.trade_max_distance}}</b> km range of <b>{{address.results[1].formatted_address}}</b> </p>
+			<p>You should be in <b>{{trade.trade_max_distance}}</b> km range of <b>{{getAdress(address)}}</b> </p>
 		</div>
 		<div class="col-md-2"></div>
 	</div>

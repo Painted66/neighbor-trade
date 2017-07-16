@@ -14,7 +14,7 @@ export class TradeViewComponent implements OnInit {
 	
 	private id;
   	trades: JSON;
-  	address: JSON
+  	address: JSON;
   	tmpRoute;
 	constructor(
       private validateService: ValidateService,
@@ -32,15 +32,17 @@ export class TradeViewComponent implements OnInit {
   		this.dbService.getTradeByTradeID(this.id).subscribe(data => {
 			  if(data.success){
 				this.trades = data.trades;
+				this.dbService.getAddress(this.trades[0].trade_latitude, this.trades[0].trade_longitude).subscribe(adressData => {
+				
+					  this.address = adressData;
+				  });  
+
 			  } else {
 				
 			  }
 			});
   		});
-
-	  this.dbService.getAddress("48.3583779", "10.7914009").subscribe(data => {
-		  this.address = data;
-	  });
+  		
   }
   
   goToRateTrade(id: string){
@@ -174,6 +176,12 @@ export class TradeViewComponent implements OnInit {
 			if(user.username) return user.username;
 		}
 		return '';
+	}
+	getAdress(adress){
+		if(adress){
+			if(adress.results[1])return adress.results[1].formatted_address;
+		}
+		return'';
 	}
 
 	}
